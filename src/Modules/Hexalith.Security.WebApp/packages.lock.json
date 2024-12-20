@@ -820,8 +820,8 @@
       },
       "Microsoft.FluentUI.AspNetCore.Components": {
         "type": "Transitive",
-        "resolved": "4.10.4",
-        "contentHash": "SOB2v8Ps0TehqbqeLpk11WK9qE/A5Oxzsb94uDH3eBznIUoFAZcjd6FQMpT/iVyBwXyPivXDaJLFnx6KUyXw7A==",
+        "resolved": "4.11.0",
+        "contentHash": "7Make48vmnx3URzj7SWw0lNGZ/XXAfwLG+aIWBAQ7oOUDukobkM+fHbnVG+xxiZ2lbS9Yo+uFEWzm7WHCMvn7A==",
         "dependencies": {
           "Microsoft.AspNetCore.Components.Web": "9.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.0",
@@ -831,10 +831,10 @@
       },
       "Microsoft.FluentUI.AspNetCore.Components.Icons": {
         "type": "Transitive",
-        "resolved": "4.10.4",
-        "contentHash": "tzJV/FJSxm18rvFjB0Mv8fOo0a6e/x4i4ftkpSw1dvkzmHU82SXZmWyt9iraE2JpVQoEUawFdjK3Veh7NX7wVg==",
+        "resolved": "4.11.0",
+        "contentHash": "3CxIPo4CpXrpSgTScmmvIkpUi23GbScFxxVyz44tv0pMIiJ7MA7JfJ/noRQORpFRb3vgN15Jox/6gdnRUyg6/w==",
         "dependencies": {
-          "Microsoft.FluentUI.AspNetCore.Components": "4.10.2"
+          "Microsoft.FluentUI.AspNetCore.Components": "4.11.0-beta.1"
         }
       },
       "Microsoft.JSInterop": {
@@ -967,16 +967,6 @@
           "Microsoft.Extensions.Logging.Abstractions": "[9.*, )"
         }
       },
-      "hexalith.dapridentitystore.abstractions": {
-        "type": "Project"
-      },
-      "hexalith.dapridentitystore.client": {
-        "type": "Project",
-        "dependencies": {
-          "Hexalith.DaprIdentityStore.Abstractions": "[1.0.0, )",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "[9.*, )"
-        }
-      },
       "hexalith.domain.abstractions": {
         "type": "Project",
         "dependencies": {
@@ -1012,8 +1002,8 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "[9.*, )",
           "Microsoft.Extensions.Localization": "[9.*, )",
           "Microsoft.Extensions.Logging.Abstractions": "[9.*, )",
-          "Microsoft.FluentUI.AspNetCore.Components": "[4.10.4, )",
-          "Microsoft.FluentUI.AspNetCore.Components.Icons": "[4.10.4, )",
+          "Microsoft.FluentUI.AspNetCore.Components": "[4.11.0, )",
+          "Microsoft.FluentUI.AspNetCore.Components.Icons": "[4.11.0, )",
           "Serilog.Extensions.Logging": "[9.0.0, )",
           "Serilog.Settings.Configuration": "[9.0.0, )"
         }
