@@ -2644,8 +2644,8 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "[9.*, )",
           "Microsoft.Extensions.Localization": "[9.*, )",
           "Microsoft.Extensions.Logging.Abstractions": "[9.*, )",
-          "Microsoft.FluentUI.AspNetCore.Components": "[4.10.4, )",
-          "Microsoft.FluentUI.AspNetCore.Components.Icons": "[4.10.4, )",
+          "Microsoft.FluentUI.AspNetCore.Components": "[4.11.0, )",
+          "Microsoft.FluentUI.AspNetCore.Components.Icons": "[4.11.0, )",
           "Serilog.Extensions.Logging": "[9.0.0, )",
           "Serilog.Settings.Configuration": "[9.0.0, )"
         }
