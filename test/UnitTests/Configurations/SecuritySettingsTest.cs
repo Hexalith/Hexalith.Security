@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Security.UnitTests.Configurations;
+﻿namespace UnitTests.Configurations;
 
 using System.Text.Json;
 
@@ -14,14 +14,14 @@ public class SecuritySettingsTest : SerializationTestBase
 {
     public static Dictionary<string, string> TestSettings => new()
         {
-            { "Hexalith:Security:Enabled", "true" },
+            { "Hexalith:Security:Disabled", "true" },
         };
 
     [Fact]
     public void GetSettingsFromConfigurationShouldSucceed()
     {
         IConfigurationRoot configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(SecuritySettingsTest.TestSettings)
+            .AddInMemoryCollection(TestSettings)
             .Build();
         SecuritySettings settings = configuration.GetSettings<SecuritySettings>();
         _ = settings.Should().NotBeNull();
@@ -32,7 +32,7 @@ public class SecuritySettingsTest : SerializationTestBase
     public void ShouldDeserialize()
     {
         // Arrange
-        string json = "{ \"Enabled\": true}";
+        string json = "{ \"Disabled\": true}";
 
         // Act
         SecuritySettings settings = JsonSerializer.Deserialize<SecuritySettings>(json);

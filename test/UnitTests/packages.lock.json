@@ -3013,6 +3013,14 @@
           "System.Text.Json": "[9.*, )"
         }
       },
+      "hexalith.ui.apiserver": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application": "[1.0.0, )",
+          "Hexalith.Application.Modules.Abstractions": "[1.0.0, )",
+          "Hexalith.UI.Modules.Abstractions": "[1.0.0, )"
+        }
+      },
       "hexalith.ui.components": {
         "type": "Project",
         "dependencies": {
@@ -3032,6 +3040,30 @@
         "dependencies": {
           "Hexalith.Application": "[1.0.0, )",
           "Hexalith.Application.Modules.Abstractions": "[1.0.0, )"
+        }
+      },
+      "hexalith.ui.modules.abstractions": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application": "[1.0.0, )"
+        }
+      },
+      "hexalith.ui.webapp": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application": "[1.0.0, )",
+          "Hexalith.UI.Components": "[1.0.0, )",
+          "Hexalith.UI.Modules.Abstractions": "[1.0.0, )"
+        }
+      },
+      "hexalith.ui.webserver": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application": "[1.0.0, )",
+          "Hexalith.UI.Components": "[1.0.0, )",
+          "Hexalith.UI.Modules.Abstractions": "[1.0.0, )",
+          "Hexalith.UI.WebApp": "[1.0.0, )",
+          "Microsoft.AspNetCore.Components.WebAssembly.Server": "[9.*, )"
         }
       }
     }

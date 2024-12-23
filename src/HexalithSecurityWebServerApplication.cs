@@ -7,7 +7,7 @@ using Hexalith.Application.Modules.Applications;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Security.Application;
 using Hexalith.Security.WebApp;
-using Hexalith.UI.Components.Modules;
+using Hexalith.UI.WebServer;
 
 /// <summary>
 /// Represents a server application.

@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Security.UnitTests.Modules;
+namespace UnitTests.Modules;
 
 using FluentAssertions;
 
@@ -59,7 +59,7 @@ public class HexalithApplicationTest
         ServiceCollection services = [];
         Dictionary<string, string> inMemorySettings = new()
         {
-            { $"{SecuritySettings.ConfigurationName()}:Enabled", "true" },
+            { $"{SecuritySettings.ConfigurationName()}:Disabled", "false" },
         };
 
         IConfiguration configuration = new ConfigurationBuilder()
