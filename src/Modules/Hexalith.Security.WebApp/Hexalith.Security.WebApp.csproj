@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
+    <ProjectReference Include="..\..\Presentation\Hexalith.Security.UI.Pages\Hexalith.Security.UI.Pages.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(AspNetCorePackagesVersion)" />
@@ -14,9 +15,10 @@
   </ItemGroup>
   <ItemGroup Condition="'$(UseProjectReference)' == 'true'">
     <ProjectReference Include="$(HexalithPath)src\Core\Infrastructure\Hexalith.Infrastructure.ClientApp\Hexalith.Infrastructure.ClientApp.csproj" />
+    <ProjectReference Include="$(HexalithDaprIdentityStorePath)src\Hexalith.DaprIdentityStore.UI\Hexalith.DaprIdentityStore.UI.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(UseProjectReference)' != 'true'">
+    <PackageReference Include="Hexalith.DaprIdentityStore.UI" Version="$(HexalithDaprIdentityStoreVersion)" />
     <PackageReference Include="Hexalith.Infrastructure.ClientApp" Version="$(HexalithVersion)" />
   </ItemGroup>
-
 </Project>

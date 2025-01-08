@@ -41,13 +41,18 @@ public sealed class HexalithSecurityWebAppModule : IWebAppApplicationModule
     public int OrderWeight => 0;
 
     /// <inheritdoc/>
-    string IApplicationModule.Path => Path;
-
-    /// <inheritdoc/>
-    public IEnumerable<Assembly> PresentationAssemblies => [GetType().Assembly];
+    public IEnumerable<Assembly> PresentationAssemblies => [
+        GetType().Assembly,
+        typeof(Hexalith.DaprIdentityStore.UI._Imports).Assembly,
+        typeof(Hexalith.Security.UI.Components._Imports).Assembly,
+        typeof(Hexalith.Security.UI.Pages._Imports).Assembly
+    ];
 
     /// <inheritdoc/>
     public string Version => _version ??= GetType().Assembly.GetAssemblyVersion() ?? "1.0.0";
+
+    /// <inheritdoc/>
+    string IApplicationModule.Path => Path;
 
     private static string Path => HexalithSecurityApplicationInformation.ShortName;
 

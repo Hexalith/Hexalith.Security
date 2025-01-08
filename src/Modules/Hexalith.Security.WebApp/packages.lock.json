@@ -1169,6 +1169,31 @@
           "Hexalith.Infrastructure.Serialization": "[1.0.0, )"
         }
       },
+      "hexalith.infrastructure.daprruntime.partitions": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application.Partitions.Abstractions": "[1.0.0, )",
+          "Hexalith.Infrastructure.DaprRuntime": "[1.0.0, )",
+          "Hexalith.Infrastructure.DaprRuntime.Abstractions": "[1.0.0, )"
+        }
+      },
+      "hexalith.infrastructure.daprruntime.sessions": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application.Partitions.Abstractions": "[1.0.0, )",
+          "Hexalith.Application.Sessions.Abstractions": "[1.0.0, )",
+          "Hexalith.Infrastructure.DaprRuntime": "[1.0.0, )",
+          "Hexalith.Infrastructure.DaprRuntime.Abstractions": "[1.0.0, )",
+          "Hexalith.Infrastructure.Emails.Abstractions": "[1.0.0, )"
+        }
+      },
+      "hexalith.infrastructure.emails.abstractions": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application.Abstractions": "[1.0.0, )",
+          "Hexalith.Infrastructure.Serialization": "[1.0.0, )"
+        }
+      },
       "hexalith.infrastructure.serialization": {
         "type": "Project",
         "dependencies": {
@@ -1190,6 +1215,15 @@
           "Hexalith.Application.Sessions.Abstractions": "[1.0.0, )",
           "Hexalith.UI.Components.Abstractions": "[1.0.0, )",
           "Microsoft.Extensions.Identity.Stores": "[9.*, )"
+        }
+      },
+      "hexalith.security.servers": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application.Modules.Abstractions": "[1.0.0, )",
+          "Hexalith.DaprIdentityStore": "[1.0.0, )",
+          "Hexalith.Infrastructure.DaprRuntime.Partitions": "[1.0.0, )",
+          "Hexalith.Infrastructure.DaprRuntime.Sessions": "[1.0.0, )"
         }
       },
       "hexalith.security.ui.components": {
