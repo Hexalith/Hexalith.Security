@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
+using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Security.Application;
@@ -43,7 +44,6 @@ public sealed class HexalithSecurityWebAppModule : IWebAppApplicationModule
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies => [
         GetType().Assembly,
-        typeof(Hexalith.DaprIdentityStore.UI._Imports).Assembly,
         typeof(Hexalith.Security.UI.Components._Imports).Assembly,
         typeof(Hexalith.Security.UI.Pages._Imports).Assembly
     ];
@@ -72,7 +72,8 @@ public sealed class HexalithSecurityWebAppModule : IWebAppApplicationModule
 
         // Add authentication services
         _ = services
-            .AddAuthorizationCore()
+            .AddAuthorizationCore(HexalithApplication.WebAppApplication?.ConfigureAuthorization()
+                    ?? throw new InvalidOperationException("Web application not initialized."))
             .AddCascadingAuthenticationState()
             .AddAuthenticationStateDeserialization()
             .AddScoped<BaseAddressAuthorizationMessageHandler>();

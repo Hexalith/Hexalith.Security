@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Security.UI.Components.Users;
+﻿namespace Hexalith.Security.Servers.Users;
 
 using System.Security.Claims;
 using System.Threading;
@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Hexalith.Application;
 using Hexalith.DaprIdentityStore.Models;
 using Hexalith.DaprIdentityStore.Services;
+using Hexalith.Security.Application.Users;
 
 using Microsoft.AspNetCore.Identity;
 

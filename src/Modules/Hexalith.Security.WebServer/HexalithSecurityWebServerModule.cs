@@ -12,7 +12,7 @@ using Hexalith.Security.Application;
 using Hexalith.Security.Application.Configurations;
 using Hexalith.Security.Application.Menu;
 using Hexalith.Security.Servers.Controllers;
-using Hexalith.Security.UI.Components.Helpers;
+using Hexalith.Security.Servers.Helpers;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -46,9 +46,6 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     public int OrderWeight => 0;
 
     /// <inheritdoc/>
-    string IApplicationModule.Path => Path;
-
-    /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies =>
     [
         GetType().Assembly,
@@ -60,6 +57,9 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
 
     /// <inheritdoc/>
     public string Version => _version ??= GetType().Assembly.GetAssemblyVersion() ?? "1.0.0";
+
+    /// <inheritdoc/>
+    string IApplicationModule.Path => Path;
 
     private static string Path => HexalithSecurityApplicationInformation.ShortName;
 

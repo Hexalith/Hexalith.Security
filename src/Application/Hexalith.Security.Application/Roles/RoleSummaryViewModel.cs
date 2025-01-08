@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Security.UI.Components.Roles;
+﻿namespace Hexalith.Security.Application.Roles;
 
 /// <summary>
 /// Represents a summary view model for a role.

@@ -2788,7 +2788,8 @@
           "Hexalith.Application.Modules.Abstractions": "[1.0.0, )",
           "Hexalith.DaprIdentityStore": "[1.0.0, )",
           "Hexalith.Infrastructure.DaprRuntime.Partitions": "[1.0.0, )",
-          "Hexalith.Infrastructure.DaprRuntime.Sessions": "[1.0.0, )"
+          "Hexalith.Infrastructure.DaprRuntime.Sessions": "[1.0.0, )",
+          "Hexalith.Security.Application": "[1.0.0, )"
         }
       },
       "hexalith.security.ui.components": {
@@ -2796,7 +2797,7 @@
         "dependencies": {
           "Hexalith.Application.Partitions.Abstractions": "[1.0.0, )",
           "Hexalith.Application.Sessions.Abstractions": "[1.0.0, )",
-          "Hexalith.DaprIdentityStore.UI": "[1.0.0, )",
+          "Hexalith.Security.Application": "[1.0.0, )",
           "Hexalith.UI.Components": "[1.0.0, )",
           "Microsoft.AspNetCore.Components.Authorization": "[9.*, )",
           "Microsoft.AspNetCore.Components.Web": "[9.*, )",
@@ -2813,7 +2814,6 @@
       "hexalith.security.webapp": {
         "type": "Project",
         "dependencies": {
-          "Hexalith.DaprIdentityStore.UI": "[1.0.0, )",
           "Hexalith.Infrastructure.ClientApp": "[1.0.0, )",
           "Hexalith.Security.Application": "[1.0.0, )",
           "Hexalith.Security.UI.Pages": "[1.0.0, )",

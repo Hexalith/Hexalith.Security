@@ -14,5 +14,8 @@
     <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Sessions" Version="$(HexalithVersion)" />
     <PackageReference Include="Hexalith.DaprIdentityStore" Version="$(HexalithDaprIdentityStoreVersion)" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
+  </ItemGroup>
 
 </Project>

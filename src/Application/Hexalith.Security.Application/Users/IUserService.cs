@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Security.UI.Components.Users;
+﻿namespace Hexalith.Security.Application.Users;
 
 using System.Threading.Tasks;
 

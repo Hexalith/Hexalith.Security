@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Security.UI.Components.Roles;
+﻿namespace Hexalith.Security.Application.Roles;
 
 using System.Threading.Tasks;
 

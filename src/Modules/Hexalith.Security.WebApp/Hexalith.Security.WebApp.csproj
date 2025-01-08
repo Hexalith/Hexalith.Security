@@ -15,10 +15,8 @@
   </ItemGroup>
   <ItemGroup Condition="'$(UseProjectReference)' == 'true'">
     <ProjectReference Include="$(HexalithPath)src\Core\Infrastructure\Hexalith.Infrastructure.ClientApp\Hexalith.Infrastructure.ClientApp.csproj" />
-    <ProjectReference Include="$(HexalithDaprIdentityStorePath)src\Hexalith.DaprIdentityStore.UI\Hexalith.DaprIdentityStore.UI.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(UseProjectReference)' != 'true'">
-    <PackageReference Include="Hexalith.DaprIdentityStore.UI" Version="$(HexalithDaprIdentityStoreVersion)" />
     <PackageReference Include="Hexalith.Infrastructure.ClientApp" Version="$(HexalithVersion)" />
   </ItemGroup>
 </Project>

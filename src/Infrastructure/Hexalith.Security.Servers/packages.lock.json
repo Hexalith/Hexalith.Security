@@ -768,6 +768,12 @@
           "Microsoft.Extensions.Logging.Abstractions": "[9.*, )"
         }
       },
+      "hexalith.application.modules": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application.Modules.Abstractions": "[1.0.0, )"
+        }
+      },
       "hexalith.application.modules.abstractions": {
         "type": "Project",
         "dependencies": {
@@ -876,6 +882,23 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "[9.*, )",
           "System.Text.Json": "[9.*, )"
+        }
+      },
+      "hexalith.security.application": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application.Modules": "[1.0.0, )",
+          "Hexalith.Application.Partitions.Abstractions": "[1.0.0, )",
+          "Hexalith.Application.Sessions.Abstractions": "[1.0.0, )",
+          "Hexalith.UI.Components.Abstractions": "[1.0.0, )",
+          "Microsoft.Extensions.Identity.Stores": "[9.*, )"
+        }
+      },
+      "hexalith.ui.components.abstractions": {
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Application": "[1.0.0, )",
+          "Hexalith.Application.Modules.Abstractions": "[1.0.0, )"
         }
       }
     }

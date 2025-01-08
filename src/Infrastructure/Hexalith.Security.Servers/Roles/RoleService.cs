@@ -1,10 +1,11 @@
-﻿namespace Hexalith.Security.UI.Components.Roles;
+﻿namespace Hexalith.Security.Servers.Roles;
 
 using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.DaprIdentityStore.Models;
 using Hexalith.DaprIdentityStore.Services;
+using Hexalith.Security.Application.Roles;
 
 using Microsoft.AspNetCore.Identity;
 
