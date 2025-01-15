@@ -15,13 +15,11 @@
     <ProjectReference Include="$(HexalithPath)\src\Core\Application\Hexalith.Application.Sessions.Abstractions\Hexalith.Application.Sessions.Abstractions.csproj" />
     <ProjectReference Include="$(HexalithPath)\src\Core\Application\Hexalith.Application.Partitions.Abstractions\Hexalith.Application.Partitions.Abstractions.csproj" />
     <ProjectReference Include="$(HexalithPath)\src\Core\UI\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
-    <!--<ProjectReference Include="$(HexalithDaprIdentityStorePath)\src\Hexalith.DaprIdentityStore.UI\Hexalith.DaprIdentityStore.UI.csproj" />-->
   </ItemGroup>
   <ItemGroup Condition="'$(UseProjectReference)' != 'true'">
     <PackageReference Include="Hexalith.Application.Sessions.Abstractions" Version="$(HexalithVersion)" />
     <PackageReference Include="Hexalith.Application.Partitions.Abstractions" Version="$(HexalithVersion)" />
     <PackageReference Include="Hexalith.UI.Components" Version="$(HexalithVersion)" />
-    <!--<PackageReference Include="Hexalith.DaprIdentityStore.UI" Version="$(HexalithDaprIdentityStoreVersion)" />-->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
