@@ -879,6 +879,11 @@
         "resolved": "8.0.0",
         "contentHash": "9opKRyOKMCi2xJ7Bj7kxtZ1r9vbzosMvRrdEhVhDz8j8MoBGgB+WmC94yH839NPH+BclAjtQ/pyagvi/8gDLkw=="
       },
+      "Scriban": {
+        "type": "Transitive",
+        "resolved": "5.12.1",
+        "contentHash": "zezB4VyYSALWvveki0IAdqxrx2r0wHqwQqP5LldFSHZ3U12YZCvt1nwJb6TZVLkerHZLP2FJIkemubLfOihdBQ=="
+      },
       "Serilog": {
         "type": "Transitive",
         "resolved": "4.2.0",
@@ -1079,7 +1084,8 @@
           "Microsoft.Extensions.Localization": "[9.*, )",
           "Microsoft.FluentUI.AspNetCore.Components": "[4.11.3, )",
           "Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter": "[4.11.3, )",
-          "Microsoft.FluentUI.AspNetCore.Components.Icons": "[4.11.3, )"
+          "Microsoft.FluentUI.AspNetCore.Components.Icons": "[4.11.3, )",
+          "Scriban": "[5.12.1, )"
         }
       },
       "hexalith.ui.components.abstractions": {
