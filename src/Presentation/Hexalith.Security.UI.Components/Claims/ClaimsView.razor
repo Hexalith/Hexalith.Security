@@ -5,37 +5,37 @@
 
 @if (_user is not null)
 {
-	if (_user.Identity is not null)
-	{
-		<p>Authentifié : @_user.Identity.IsAuthenticated</p>
-		<p>Nom : @_user.Identity.Name</p>
-		<p>Authentication type : @_user.Identity.AuthenticationType</p>
-	}
-	@if (_user.Claims.Count() > 0)
-	{
-		<h3>User claims</h3>
-		<ul>
-			@foreach (var claim in _user.Claims)
-			{
-				<li>@claim.Type: @claim.Value</li>
-			}
-		</ul>
-	}
+    if (_user.Identity is not null)
+    {
+        <p>Authentifié : @_user.Identity.IsAuthenticated</p>
+        <p>Nom : @_user.Identity.Name</p>
+        <p>Authentication type : @_user.Identity.AuthenticationType</p>
+    }
+    @if (_user.Claims.Count() > 0)
+    {
+        <h3>User claims</h3>
+        <ul>
+            @foreach (var claim in _user.Claims)
+            {
+                <li>@claim.Type: @claim.Value</li>
+            }
+        </ul>
+    }
 }
 @code {
-	[CascadingParameter]
-	private Task<AuthenticationState>? authenticationState { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationState { get; set; }
 
-	private IEnumerable<Claim> claims = Enumerable.Empty<Claim>();
-	private ClaimsPrincipal? _user;
+    private IEnumerable<Claim> claims = Enumerable.Empty<Claim>();
+    private ClaimsPrincipal? _user;
 
-	protected override async Task OnInitializedAsync()
-	{
-		if (authenticationState != null)
-		{
-			var authState = await authenticationState;
-			_user = authState.User;
-			await base.OnInitializedAsync();
-		}
-	}
+    protected override async Task OnInitializedAsync()
+    {
+        if (authenticationState != null)
+        {
+            var authState = await authenticationState;
+            _user = authState.User;
+            await base.OnInitializedAsync();
+        }
+    }
 }
