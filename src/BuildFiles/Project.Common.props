@@ -59,7 +59,7 @@
     <MinverVersion>5.0.0</MinverVersion>
     <MoqVersion>4.20.72</MoqVersion>
     <MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
-    <OpenTelemetryVersion>1.10.1</OpenTelemetryVersion>
+    <OpenTelemetryVersion>1.11.0</OpenTelemetryVersion>
     <SonarAnalyzerCSharpVersion>10.6.0.109712</SonarAnalyzerCSharpVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <XUnitRunnerVisualStudioVersion>3.0.1</XUnitRunnerVisualStudioVersion>
