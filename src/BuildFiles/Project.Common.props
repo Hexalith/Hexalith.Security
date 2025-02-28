@@ -50,19 +50,19 @@
   <PropertyGroup>
     <AspireVersion>9.1.0</AspireVersion>
     <CoverletCollectorVersion>6.0.4</CoverletCollectorVersion>
-    <FluentAssertionsVersion>8.0.1</FluentAssertionsVersion>
+    <FluentAssertionsVersion>8.1.1</FluentAssertionsVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
     <GoogleApiVersion>5.4.3</GoogleApiVersion>
-    <MicrosoftIdentityWebVersion>3.6.2</MicrosoftIdentityWebVersion>
-    <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftVisualStudioThreadingAnalyzersVersion>17.12.19</MicrosoftVisualStudioThreadingAnalyzersVersion>
+    <MicrosoftIdentityWebVersion>3.7.1</MicrosoftIdentityWebVersion>
+    <MicrosoftNETTestSdkVersion>17.13.0</MicrosoftNETTestSdkVersion>
+    <MicrosoftVisualStudioThreadingAnalyzersVersion>17.13.2</MicrosoftVisualStudioThreadingAnalyzersVersion>
     <MinverVersion>5.0.0</MinverVersion>
     <MoqVersion>4.20.72</MoqVersion>
     <MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
     <OpenTelemetryVersion>1.11.0</OpenTelemetryVersion>
     <SonarAnalyzerCSharpVersion>10.6.0.109712</SonarAnalyzerCSharpVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
-    <XUnitRunnerVisualStudioVersion>3.0.1</XUnitRunnerVisualStudioVersion>
+    <XUnitRunnerVisualStudioVersion>3.0.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.3</XUnitVersion>
   </PropertyGroup>
 
