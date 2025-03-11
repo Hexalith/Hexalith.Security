@@ -150,6 +150,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{15BB402D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_global", "_global", "{57AF038F-723F-47A6-98D1-2E92783D1E7D}"
 	ProjectSection(SolutionItems) = preProject
+		Hexalith\.gitignore = Hexalith\.gitignore
 		Hexalith\flush_redis.bat = Hexalith\flush_redis.bat
 		Hexalith\LICENSE = Hexalith\LICENSE
 		Hexalith\README.md = Hexalith\README.md
