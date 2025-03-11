@@ -254,34 +254,6 @@
           "System.Text.Json": "8.0.5"
         }
       },
-      "Aspire.Hosting.Dapr": {
-        "type": "Transitive",
-        "resolved": "9.1.0",
-        "contentHash": "dYflymgWzDMIdzaYmSHvicsZXGE3Idw/+sweUpfYQ/AiRWGFYtmLBwD2EB2hh2sVj6owrcylmUgA97ELW0GX4Q==",
-        "dependencies": {
-          "AspNetCore.HealthChecks.Uris": "9.0.0",
-          "Aspire.Hosting": "9.1.0",
-          "Google.Protobuf": "3.29.3",
-          "Grpc.AspNetCore": "2.67.0",
-          "Grpc.Net.ClientFactory": "2.67.0",
-          "Grpc.Tools": "2.67.0",
-          "Humanizer.Core": "2.14.1",
-          "JsonPatch.Net": "3.2.3",
-          "KubernetesClient": "15.0.1",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.12",
-          "Microsoft.Extensions.Hosting": "8.0.1",
-          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
-          "Microsoft.Extensions.Http": "8.0.1",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
-          "Microsoft.Extensions.Options": "8.0.2",
-          "Microsoft.Extensions.Primitives": "8.0.0",
-          "Polly.Core": "8.5.1",
-          "System.IO.Hashing": "9.0.1"
-        }
-      },
       "Aspire.Hosting.Redis": {
         "type": "Transitive",
         "resolved": "9.1.0",
@@ -566,6 +538,14 @@
           "Azure.Storage.Common": "12.22.0",
           "System.Memory.Data": "6.0.0",
           "System.Text.Json": "6.0.10"
+        }
+      },
+      "CommunityToolkit.Aspire.Hosting.Dapr": {
+        "type": "Transitive",
+        "resolved": "9.2.1",
+        "contentHash": "Lw7mEkc3bhhWZzc+/aL2L31ZaDBPNmtL8En8bYsX+mU0QgaoHANPpEl974TFw0crXgFw6EfKfUZ1HNZw03eggQ==",
+        "dependencies": {
+          "Aspire.Hosting": "9.1.0"
         }
       },
       "CompareNETObjects": {
@@ -2360,9 +2340,9 @@
           "Aspire.Hosting": "[9.1.0, )",
           "Aspire.Hosting.AppHost": "[9.1.0, )",
           "Aspire.Hosting.Azure.CosmosDB": "[9.1.0, )",
-          "Aspire.Hosting.Dapr": "[9.1.0, )",
           "Aspire.Hosting.Redis": "[9.1.0, )",
           "Aspire.Microsoft.Azure.Cosmos": "[9.1.0, )",
+          "CommunityToolkit.Aspire.Hosting.Dapr": "[9.2.1, )",
           "Hexalith.Application": "[1.0.0, )",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "[9.*, )",
           "Microsoft.Extensions.Hosting": "[9.*, )",
