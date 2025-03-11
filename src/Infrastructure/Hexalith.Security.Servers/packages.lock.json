@@ -28,11 +28,11 @@
       },
       "Dapr.Actors": {
         "type": "Transitive",
-        "resolved": "1.15.0",
-        "contentHash": "dPXjcXKp2M0mwtuGCDw0dWG1yVNOE77Fv9ASJAAD0Y8nNL9QjESMQYLgoK43qvVrfadTvYDh1P+v9wnrUlMTmw==",
+        "resolved": "1.15.1",
+        "contentHash": "SgQ9noheA/iaLK63eW1aRnqBFPw5Dy0W1RcMoB5Ims0tB/bZJrJbj3r8NnWoebG9/NUUeL37r7u6FU1UmU9b0g==",
         "dependencies": {
-          "Dapr.Client": "1.15.0",
-          "Dapr.Common": "1.15.0",
+          "Dapr.Client": "1.15.1",
+          "Dapr.Common": "1.15.1",
           "Google.Api.CommonProtos": "2.2.0",
           "Google.Protobuf": "3.28.2",
           "Grpc.Net.Client": "2.66.0",
@@ -47,11 +47,11 @@
       },
       "Dapr.Actors.AspNetCore": {
         "type": "Transitive",
-        "resolved": "1.15.0",
-        "contentHash": "prFc6dF1zmC6zCFFjhrmI9h4inGeGhJIEzvE9vFZYfO+l+vHVbI6hcUrdbpd5YAGq8CgGPAmHtsHbW4jZ98Big==",
+        "resolved": "1.15.1",
+        "contentHash": "nXmhXuoSgcBwpn5Y2BkxNoCZuJxg9hfHGryYVV+spv5irnz2C+t1BOexSkJqXgeJlaAXioZUSDr8ik/oK5eXcg==",
         "dependencies": {
-          "Dapr.Actors": "1.15.0",
-          "Dapr.Common": "1.15.0",
+          "Dapr.Actors": "1.15.1",
+          "Dapr.Common": "1.15.1",
           "Google.Api.CommonProtos": "2.2.0",
           "Google.Protobuf": "3.28.2",
           "Grpc.Net.Client": "2.66.0",
@@ -66,11 +66,11 @@
       },
       "Dapr.AspNetCore": {
         "type": "Transitive",
-        "resolved": "1.15.0",
-        "contentHash": "QAyoFdPyr7NnSK6TgL88+wCReUh27HvAjKUWnUYDgCr7L0az4EyYNUNEbku1mGivDvcsgUSZIrh9nupjWYj+Uw==",
+        "resolved": "1.15.1",
+        "contentHash": "Zti+SQ+OkeVhE+vKWreqp2acON6AMmYnhBiqITn4rEx5T78dWLZFifh9SigtpcarTBycCdedP4/oSjqgmR0Yiw==",
         "dependencies": {
-          "Dapr.Client": "1.15.0",
-          "Dapr.Common": "1.15.0",
+          "Dapr.Client": "1.15.1",
+          "Dapr.Common": "1.15.1",
           "Google.Api.CommonProtos": "2.2.0",
           "Google.Protobuf": "3.28.2",
           "Grpc.Net.Client": "2.66.0",
@@ -85,11 +85,11 @@
       },
       "Dapr.Client": {
         "type": "Transitive",
-        "resolved": "1.15.0",
-        "contentHash": "DzUnLdV455CPDFYEPJsGEwkWoi1pGmQGdVxpdOGmhqgjAIJioLZcf4B40zG02n712oEHAS+O6DVH5zveX2ZLjA==",
+        "resolved": "1.15.1",
+        "contentHash": "85Kft+GMAXjwepZj6eA4dKqJ0qpXW7RyVUdeizCoVsKg1fxQ3KyDgs9Fmd4tPwcLukDCDZvquf1kiMnh1fMUFg==",
         "dependencies": {
-          "Dapr.Common": "1.15.0",
-          "Dapr.Protos": "1.15.0",
+          "Dapr.Common": "1.15.1",
+          "Dapr.Protos": "1.15.1",
           "Google.Api.CommonProtos": "2.2.0",
           "Google.Protobuf": "3.28.2",
           "Grpc.Net.Client": "2.66.0",
@@ -104,8 +104,8 @@
       },
       "Dapr.Common": {
         "type": "Transitive",
-        "resolved": "1.15.0",
-        "contentHash": "dxMx1qa1n5wqte6CaGWf3oj+DuAXfa7H7ggYw00J+jpWBQUDQ486nA5OvQs1fFqpzM8tzmqC3W2j8iwh+iitQQ==",
+        "resolved": "1.15.1",
+        "contentHash": "YnaPk6+X0BSbea6PgyFP5dc55fsYQG65pBILhRbWKVt5ucM4ZlDUhV7CiE/1zGobhU75/WFd9khVu583DllT2A==",
         "dependencies": {
           "Google.Api.CommonProtos": "2.2.0",
           "Google.Protobuf": "3.28.2",
@@ -121,8 +121,8 @@
       },
       "Dapr.Protos": {
         "type": "Transitive",
-        "resolved": "1.15.0",
-        "contentHash": "OMSltFMqpXiQLC5PZX9WoBq4ZYLDkNYn226w91gTHGRfYw8Ii1/gWlIkcQUgH287MZxG+llhXGsaANokWhIftw==",
+        "resolved": "1.15.1",
+        "contentHash": "s5tnWRScsWToBymSjd+tN3/5VqcGjOgqv71mTPmpwA4nZzqgs/59k61HchZVSnWMaClsaqw69mAC+AttzDkA/Q==",
         "dependencies": {
           "Google.Api.CommonProtos": "2.2.0",
           "Google.Protobuf": "3.28.2",
@@ -915,8 +915,8 @@
       "hexalith.infrastructure.daprruntime.abstractions": {
         "type": "Project",
         "dependencies": {
-          "Dapr.Actors.AspNetCore": "[1.15.*, )",
-          "Dapr.AspNetCore": "[1.15.*, )",
+          "Dapr.Actors.AspNetCore": "[1.15.1, )",
+          "Dapr.AspNetCore": "[1.15.1, )",
           "Hexalith.Application": "[1.0.0, )",
           "Hexalith.Infrastructure.Serialization": "[1.0.0, )"
         }
