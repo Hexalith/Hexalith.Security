@@ -53,7 +53,7 @@
     <FluentAssertionsVersion>8.1.1</FluentAssertionsVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
     <GoogleApiVersion>5.4.3</GoogleApiVersion>
-    <MicrosoftIdentityWebVersion>3.7.1</MicrosoftIdentityWebVersion>
+    <MicrosoftIdentityWebVersion>3.8.0</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.13.0</MicrosoftNETTestSdkVersion>
     <MicrosoftVisualStudioThreadingAnalyzersVersion>17.13.2</MicrosoftVisualStudioThreadingAnalyzersVersion>
     <MinverVersion>5.0.0</MinverVersion>
