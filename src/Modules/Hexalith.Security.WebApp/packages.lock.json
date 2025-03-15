@@ -37,6 +37,12 @@
         "resolved": "17.13.2",
         "contentHash": "Qcd8IlaTXZVq3wolBnzby1P7kWihdWaExtD8riumiKuG1sHa8EgjV/o70TMjTaeUMhomBbhfdC9OPwAHoZfnjQ=="
       },
+      "SonarAnalyzer.CSharp": {
+        "type": "Direct",
+        "requested": "[10.6.0.109712, )",
+        "resolved": "10.6.0.109712",
+        "contentHash": "fMwoXhlmFrcIYLpmCZOPXQkKwQD6WoFsmkZp8FZ7RJ9Db+ELUg56qh1X4Vy2nU7ZOWmuAMDOMosYxiQKNLBWtw=="
+      },
       "StyleCop.Analyzers": {
         "type": "Direct",
         "requested": "[1.2.0-beta.556, )",
