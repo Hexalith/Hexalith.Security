@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Authentication;
 public class AzureContainerAppAuthenticationOptions : AuthenticationSchemeOptions
 {
     /// <summary>
-    /// The default scheme for Azure Container App Authentication.
+    /// Gets the authentication type.
     /// </summary>
-    public const string DefaultScheme = "AzureContainerAppAuthentication";
+    public static string AuthenticationType => DefaultScheme;
 
     /// <summary>
-    /// Gets or sets the authentication type.
+    /// Gets the default scheme for Azure Container App Authentication.
     /// </summary>
-    public string AuthenticationType = DefaultScheme;
+    public static string DefaultScheme => "AzureContainerAppAuthentication";
 
     /// <summary>
     /// Gets the scheme.

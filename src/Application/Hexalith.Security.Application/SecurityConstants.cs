@@ -1,32 +1,37 @@
 ﻿namespace Hexalith.Security.Application;
 
 /// <summary>
-/// Contains constants used in Security.
+/// Contains the security constants.
 /// </summary>
 public static class SecurityConstants
 {
     /// <summary>
-    /// The header name for the client principal ID.
+    /// Gets the header name for the client principal ID.
     /// </summary>
-    public const string ClientPrincipalHeader = "X-MS-CLIENT-PRINCIPAL";
+    public static string ClientPrincipalHeader => "X-MS-CLIENT-PRINCIPAL";
 
     /// <summary>
-    /// The header name for the client principal identity provider.
+    /// Gets the header name for the client principal identity provider.
     /// </summary>
-    public const string ClientPrincipalIdentityProviderHeader = "X-MS-CLIENT-PRINCIPAL-IDP";
+    public static string ClientPrincipalIdentityProviderHeader => "X-MS-CLIENT-PRINCIPAL-IDP";
 
     /// <summary>
-    /// The header name for the client principal ID.
+    /// Gets the header name for the client principal ID.
     /// </summary>
-    public const string ClientPrincipalIdHeader = "X-MS-CLIENT-PRINCIPAL-ID";
+    public static string ClientPrincipalIdHeader => "X-MS-CLIENT-PRINCIPAL-ID";
 
     /// <summary>
-    /// The header name for the client principal name.
+    /// Gets the header name for the client principal name.
     /// </summary>
-    public const string ClientPrincipalNameHeader = "X-MS-CLIENT-PRINCIPAL-NAME";
+    public static string ClientPrincipalNameHeader => "X-MS-CLIENT-PRINCIPAL-NAME";
 
     /// <summary>
-    /// The header name for the partition ID.
+    /// Gets the header name for the client principal roles.
     /// </summary>
-    public const string PartitionHeader = "HEXALITH-PARTITION-ID";
+    public static string ClientPrincipalRolesHeader => "X-MS-CLIENT-PRINCIPAL-ROLES";
+
+    /// <summary>
+    /// Gets the header name for the partition ID.
+    /// </summary>
+    public static string PartitionHeader => "HEXALITH-PARTITION-ID";
 }

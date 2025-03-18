@@ -3,6 +3,8 @@ namespace Hexalith.Security.Servers.Authentications;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 
+using Hexalith.Security.Application;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -25,7 +27,7 @@ public class AzureContainerAppAuthenticationHandler(
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
         // Check if the request contains the Azure Container App headers
-        _ = Context.Request.Headers.TryGetValue("X-MS-CLIENT-PRINCIPAL-ID", out Microsoft.Extensions.Primitives.StringValues principalIdValues);
+        _ = Context.Request.Headers.TryGetValue(SecurityConstants.ClientPrincipalHeader, out Microsoft.Extensions.Primitives.StringValues principalIdValues);
         string? principalId = principalIdValues;
         if (string.IsNullOrEmpty(principalId))
         {
@@ -36,8 +38,8 @@ public class AzureContainerAppAuthenticationHandler(
         claims.Add(new Claim(ClaimTypes.NameIdentifier, principalId));
 
         // Get the user information from the headers
-        _ = Context.Request.Headers.TryGetValue("X-MS-CLIENT-PRINCIPAL-NAME", out Microsoft.Extensions.Primitives.StringValues principalNameValues);
-        _ = Context.Request.Headers.TryGetValue("X-MS-CLIENT-PRINCIPAL-IDP", out Microsoft.Extensions.Primitives.StringValues identityProviderValues);
+        _ = Context.Request.Headers.TryGetValue(SecurityConstants.ClientPrincipalNameHeader, out Microsoft.Extensions.Primitives.StringValues principalNameValues);
+        _ = Context.Request.Headers.TryGetValue(SecurityConstants.ClientPrincipalIdentityProviderHeader, out Microsoft.Extensions.Primitives.StringValues identityProviderValues);
         string? principalName = principalNameValues;
         string? identityProvider = identityProviderValues;
 
@@ -53,7 +55,7 @@ public class AzureContainerAppAuthenticationHandler(
         }
 
         // Add roles if available
-        if (Context.Request.Headers.TryGetValue("X-MS-CLIENT-PRINCIPAL-ROLES", out Microsoft.Extensions.Primitives.StringValues roles) &&
+        if (Context.Request.Headers.TryGetValue(SecurityConstants.ClientPrincipalRolesHeader, out Microsoft.Extensions.Primitives.StringValues roles) &&
             !string.IsNullOrEmpty(roles))
         {
             string[] rolesList = roles.ToString().Split(',');
@@ -64,7 +66,7 @@ public class AzureContainerAppAuthenticationHandler(
         }
 
         // Create the principal and ticket
-        ClaimsIdentity identity = new(claims, Options.AuthenticationType);
+        ClaimsIdentity identity = new(claims, AzureContainerAppAuthenticationOptions.AuthenticationType);
         ClaimsPrincipal principal = new(identity);
         AuthenticationTicket ticket = new(principal, AzureContainerAppAuthenticationOptions.Scheme);
 
