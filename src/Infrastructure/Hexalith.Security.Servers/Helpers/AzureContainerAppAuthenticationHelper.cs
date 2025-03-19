@@ -32,45 +32,49 @@ public static class AzureContainerAppAuthenticationHelper
         if (settings.EasyAuthMicrosoft)
         {
             _ = builder
-                .AddScheme<AzureContainerAppMicrosoftAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppMicrosoftAuthenticationOptions>>(
-                AzureContainerAppMicrosoftAuthenticationOptions.DefaultScheme,
-                options => { });
-            _ = builder.Services.AddOptions<AzureContainerAppMicrosoftAuthenticationOptions>();
+                .AddRemoteScheme<AzureContainerAppMicrosoftAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppMicrosoftAuthenticationOptions>>(
+                    AzureContainerAppMicrosoftAuthenticationOptions.DefaultScheme,
+                    "Microsoft",
+                    options => { });
         }
 
         if (settings.EasyAuthGithub)
         {
             _ = builder
-                .AddScheme<AzureContainerAppGithubAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppGithubAuthenticationOptions>>(
-                AzureContainerAppGithubAuthenticationOptions.DefaultScheme,
-                options => { });
+                .AddRemoteScheme<AzureContainerAppGithubAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppGithubAuthenticationOptions>>(
+                    AzureContainerAppGithubAuthenticationOptions.DefaultScheme,
+                    "Github",
+                    options => { });
             _ = builder.Services.AddOptions<AzureContainerAppGithubAuthenticationOptions>();
         }
 
         if (settings.EasyAuthFacebook)
         {
             _ = builder
-                .AddScheme<AzureContainerAppFacebookAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppFacebookAuthenticationOptions>>(
-                AzureContainerAppFacebookAuthenticationOptions.DefaultScheme,
-                options => { });
+                .AddRemoteScheme<AzureContainerAppFacebookAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppFacebookAuthenticationOptions>>(
+                    AzureContainerAppFacebookAuthenticationOptions.DefaultScheme,
+                    "Facebook",
+                    options => { });
             _ = builder.Services.AddOptions<AzureContainerAppFacebookAuthenticationOptions>();
         }
 
         if (settings.EasyAuthGoogle)
         {
             _ = builder
-                .AddScheme<AzureContainerAppGoogleAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppGoogleAuthenticationOptions>>(
-                AzureContainerAppGoogleAuthenticationOptions.DefaultScheme,
-                options => { });
+                .AddRemoteScheme<AzureContainerAppGoogleAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppGoogleAuthenticationOptions>>(
+                    AzureContainerAppGoogleAuthenticationOptions.DefaultScheme,
+                    "Google",
+                    options => { });
             _ = builder.Services.AddOptions<AzureContainerAppGoogleAuthenticationOptions>();
         }
 
         if (settings.EasyAuthX)
         {
             _ = builder
-                .AddScheme<AzureContainerAppXAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppXAuthenticationOptions>>(
-                AzureContainerAppXAuthenticationOptions.DefaultScheme,
-                options => { });
+                .AddRemoteScheme<AzureContainerAppXAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppXAuthenticationOptions>>(
+                    AzureContainerAppXAuthenticationOptions.DefaultScheme,
+                    "X",
+                    options => { });
             _ = builder.Services.AddOptions<AzureContainerAppXAuthenticationOptions>();
         }
 

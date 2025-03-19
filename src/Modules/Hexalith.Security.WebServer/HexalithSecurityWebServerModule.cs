@@ -84,11 +84,6 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
             .AddApplicationPart(typeof(UserPartitionController).Assembly)
             .AddDapr();
 
-        _ = services
-            .AddCascadingAuthenticationState()
-            .AddDaprIdentityStoreUI()
-            .AddSingleton(p => SecurityMenu.Menu)
-            .ConfigureSettings<SecuritySettings>(configuration);
         _ = services.AddAuthentication()
             .AddCookie(
                 CookieAuthenticationDefaults.AuthenticationScheme,
@@ -99,6 +94,11 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
                     options.AccessDeniedPath = "/Account/Login";
                 })
             .AddAzureContainerAppAuthentication(configuration);
+        _ = services
+            .AddCascadingAuthenticationState()
+            .AddDaprIdentityStoreUI()
+            .AddSingleton(p => SecurityMenu.Menu)
+            .ConfigureSettings<SecuritySettings>(configuration);
         _ = services
             .AddAuthorization(
                 HexalithApplication.WebServerApplication?.ConfigureAuthorization()

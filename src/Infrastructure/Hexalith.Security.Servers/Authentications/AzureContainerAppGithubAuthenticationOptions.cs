@@ -15,7 +15,7 @@ public class AzureContainerAppGithubAuthenticationOptions : RemoteAuthentication
     /// <summary>
     /// Gets the default scheme for Azure Container App Authentication.
     /// </summary>
-    public static string DefaultScheme => "AzureContainerAppGithubAuthentication";
+    public static string DefaultScheme => "EasyGithub";
 
     /// <summary>
     /// Gets the authentication type.

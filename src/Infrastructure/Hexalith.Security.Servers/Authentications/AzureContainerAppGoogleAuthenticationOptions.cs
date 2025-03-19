@@ -15,7 +15,7 @@ public class AzureContainerAppGoogleAuthenticationOptions : RemoteAuthentication
     /// <summary>
     /// Gets the default scheme for Azure Container App Authentication.
     /// </summary>
-    public static string DefaultScheme => "AzureContainerAppGoogleAuthentication";
+    public static string DefaultScheme => "EasyGoogle";
 
     /// <summary>
     /// Gets the authentication type.

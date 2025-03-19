@@ -15,7 +15,7 @@ public class AzureContainerAppFacebookAuthenticationOptions : RemoteAuthenticati
     /// <summary>
     /// Gets the default scheme for Azure Container App Authentication.
     /// </summary>
-    public static string DefaultScheme => "AzureContainerAppFacebookAuthentication";
+    public static string DefaultScheme => "EasyFacebook";
 
     /// <summary>
     /// Gets the authentication type.

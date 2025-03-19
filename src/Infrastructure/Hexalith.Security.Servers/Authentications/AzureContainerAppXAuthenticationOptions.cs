@@ -15,7 +15,7 @@ public class AzureContainerAppXAuthenticationOptions : RemoteAuthenticationOptio
     /// <summary>
     /// Gets the default scheme for Azure Container App Authentication.
     /// </summary>
-    public static string DefaultScheme => "AzureContainerAppXAuthentication";
+    public static string DefaultScheme => "EasyX";
 
     /// <summary>
     /// Gets the authentication type.
