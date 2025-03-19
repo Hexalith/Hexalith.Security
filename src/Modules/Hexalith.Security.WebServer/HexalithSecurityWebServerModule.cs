@@ -15,6 +15,7 @@ using Hexalith.Security.Servers.Authentications;
 using Hexalith.Security.Servers.Controllers;
 using Hexalith.Security.Servers.Helpers;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -89,13 +90,17 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
             .AddDaprIdentityStoreUI()
             .AddSingleton(p => SecurityMenu.Menu)
             .ConfigureSettings<SecuritySettings>(configuration);
-        _ = services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = AzureContainerAppAuthenticationOptions.DefaultScheme;
-                options.DefaultAuthenticateScheme = AzureContainerAppAuthenticationOptions.DefaultScheme;
-                options.DefaultChallengeScheme = AzureContainerAppAuthenticationOptions.DefaultScheme;
-            })
+        _ = services.AddAuthentication()
+            .AddCookie(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                options =>
+                {
+                    options.LoginPath = "/Account/Login";
+                    options.LogoutPath = "/Logout";
+                    options.AccessDeniedPath = "/Account/Login";
+                })
             .AddAzureContainerAppAuthentication();
+        _ = services.AddOptions<AzureContainerAppMicrosoftAuthenticationOptions>();
         _ = services
             .AddAuthorization(
                 HexalithApplication.WebServerApplication?.ConfigureAuthorization()

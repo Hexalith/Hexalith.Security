@@ -12,26 +12,28 @@ using Microsoft.Extensions.Options;
 /// <summary>
 /// Authentication handler for Azure Container App.
 /// </summary>
+/// <typeparam name="TProvider">The type of the authentication options.</typeparam>
 /// <remarks>
-/// Initializes a new instance of the <see cref="AzureContainerAppAuthenticationHandler"/> class.
+/// Initializes a new instance of the <see cref="AzureContainerAppAuthenticationHandler{TProvider}"/> class.
 /// </remarks>
 /// <param name="options">The options monitor.</param>
 /// <param name="logger">The logger factory.</param>
 /// <param name="encoder">The URL encoder.</param>
-public class AzureContainerAppAuthenticationHandler(
-        IOptionsMonitor<AzureContainerAppAuthenticationOptions> options,
+public class AzureContainerAppAuthenticationHandler<TProvider>(
+        IOptionsMonitor<TProvider> options,
         ILoggerFactory logger,
-        UrlEncoder encoder) : AuthenticationHandler<AzureContainerAppAuthenticationOptions>(options, logger, encoder)
+        UrlEncoder encoder) : RemoteAuthenticationHandler<TProvider>(options, logger, encoder)
+    where TProvider : RemoteAuthenticationOptions, IAzureContainerAppAuthenticationOptions, new()
 {
     /// <inheritdoc/>
-    protected override Task<AuthenticateResult> HandleAuthenticateAsync()
+    protected override Task<HandleRequestResult> HandleRemoteAuthenticateAsync()
     {
         // Check if the request contains the Azure Container App headers
         _ = Context.Request.Headers.TryGetValue(SecurityConstants.ClientPrincipalHeader, out Microsoft.Extensions.Primitives.StringValues principalIdValues);
         string? principalId = principalIdValues;
         if (string.IsNullOrEmpty(principalId))
         {
-            return Task.FromResult(AuthenticateResult.NoResult());
+            return Task.FromResult(HandleRequestResult.NoResult());
         }
 
         List<Claim> claims = [];
@@ -66,10 +68,10 @@ public class AzureContainerAppAuthenticationHandler(
         }
 
         // Create the principal and ticket
-        ClaimsIdentity identity = new(claims, AzureContainerAppAuthenticationOptions.AuthenticationType);
+        ClaimsIdentity identity = new(claims, new TProvider().AuthenticationType);
         ClaimsPrincipal principal = new(identity);
-        AuthenticationTicket ticket = new(principal, AzureContainerAppAuthenticationOptions.Scheme);
+        AuthenticationTicket ticket = new(principal, new TProvider().Scheme);
 
-        return Task.FromResult(AuthenticateResult.Success(ticket));
+        return Task.FromResult(HandleRequestResult.Success(ticket));
     }
 }

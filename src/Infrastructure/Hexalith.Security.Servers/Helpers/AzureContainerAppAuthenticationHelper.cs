@@ -19,8 +19,9 @@ public static class AzureContainerAppAuthenticationHelper
         this AuthenticationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
-        return builder.AddScheme<AzureContainerAppAuthenticationOptions, AzureContainerAppAuthenticationHandler>(
-            AzureContainerAppAuthenticationOptions.Scheme,
+        return builder
+            .AddScheme<AzureContainerAppMicrosoftAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppMicrosoftAuthenticationOptions>>(
+            AzureContainerAppMicrosoftAuthenticationOptions.DefaultScheme,
             options => { });
     }
 }
