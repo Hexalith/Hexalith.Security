@@ -11,7 +11,6 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.Security.Application;
 using Hexalith.Security.Application.Configurations;
 using Hexalith.Security.Application.Menu;
-using Hexalith.Security.Servers.Authentications;
 using Hexalith.Security.Servers.Controllers;
 using Hexalith.Security.Servers.Helpers;
 
@@ -100,7 +99,6 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
                     options.AccessDeniedPath = "/Account/Login";
                 })
             .AddAzureContainerAppAuthentication();
-        _ = services.AddOptions<AzureContainerAppMicrosoftAuthenticationOptions>();
         _ = services
             .AddAuthorization(
                 HexalithApplication.WebServerApplication?.ConfigureAuthorization()

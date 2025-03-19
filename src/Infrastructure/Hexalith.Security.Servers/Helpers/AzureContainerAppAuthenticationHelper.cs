@@ -3,6 +3,7 @@ namespace Hexalith.Security.Servers.Helpers;
 using Hexalith.Security.Servers.Authentications;
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
 /// Extension methods for adding Azure Container App authentication.
@@ -19,9 +20,11 @@ public static class AzureContainerAppAuthenticationHelper
         this AuthenticationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
-        return builder
+        _ = builder
             .AddScheme<AzureContainerAppMicrosoftAuthenticationOptions, AzureContainerAppAuthenticationHandler<AzureContainerAppMicrosoftAuthenticationOptions>>(
             AzureContainerAppMicrosoftAuthenticationOptions.DefaultScheme,
             options => { });
+        _ = builder.Services.AddOptions<AzureContainerAppMicrosoftAuthenticationOptions>();
+        return builder;
     }
 }
