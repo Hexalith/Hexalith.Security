@@ -98,7 +98,7 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
                     options.LogoutPath = "/Logout";
                     options.AccessDeniedPath = "/Account/Login";
                 })
-            .AddAzureContainerAppAuthentication();
+            .AddAzureContainerAppAuthentication(configuration);
         _ = services
             .AddAuthorization(
                 HexalithApplication.WebServerApplication?.ConfigureAuthorization()

@@ -10,16 +10,17 @@ using Hexalith.Extensions.Configuration;
 [DataContract]
 public record SecuritySettings(
     [property: DataMember(Order = 1)] bool EasyAuthMicrosoft,
-    [property: DataMember(Order = 1)] bool EasyAuthGithub,
-    [property: DataMember(Order = 1)] bool EasyAuthGoogle,
-    [property: DataMember(Order = 1)] bool EasyAuthX,
-    [property: DataMember(Order = 1)] bool Disabled) : ISettings
+    [property: DataMember(Order = 2)] bool EasyAuthGithub,
+    [property: DataMember(Order = 3)] bool EasyAuthGoogle,
+    [property: DataMember(Order = 4)] bool EasyAuthFacebook,
+    [property: DataMember(Order = 5)] bool EasyAuthX,
+    [property: DataMember(Order = 6)] bool Disabled) : ISettings
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SecuritySettings"/> class.
     /// </summary>
     public SecuritySettings()
-        : this(true, false, false, false, false)
+        : this(true, false, false, false, false, false)
     {
     }
 
