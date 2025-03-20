@@ -27,8 +27,16 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 {
     _ = app
         .AddProject<Projects.HexalithApp_WebServer>("securityweb")
-        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Id")
-        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Secret")
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Id", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Secret", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Google__Id", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Google__Secret", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Github__Id", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Github__Secret", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Facebook__Id", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Facebook__Secret", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__X__Id", false)
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__X__Secret", false)
         .WithEnvironmentFromConfiguration("EmailServer__ApplicationSecret")
         .WithEnvironmentFromConfiguration("EmailServer__FromEmail")
         .WithEnvironmentFromConfiguration("EmailServer__FromName");
