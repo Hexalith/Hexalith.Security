@@ -14,6 +14,7 @@ using Hexalith.Security.Application.Menu;
 using Hexalith.Security.Servers.Controllers;
 using Hexalith.Security.Servers.Helpers;
 
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -92,6 +93,11 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
             .AddAuthorization(
                 HexalithApplication.WebServerApplication?.ConfigureAuthorization()
                     ?? throw new InvalidOperationException("Web server application not initialized."));
+        _ = services
+            .AddAuthentication(
+                HexalithApplication.WebServerApplication?.ConfigureAuthentication()
+                    ?? throw new InvalidOperationException("Web server application not initialized."))
+            .AddDapr();
     }
 
     /// <inheritdoc/>
@@ -132,5 +138,14 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
         _ = app
             .UseAuthentication()
             .UseAuthorization();
+    }
+
+    /// <inheritdoc/>
+    void IApplicationModule.ConfigureAuthorization(object options)
+    {
+        if (options is AuthorizationOptions authorizationOptions)
+        {
+            authorizationOptions.AddDapr();
+        }
     }
 }

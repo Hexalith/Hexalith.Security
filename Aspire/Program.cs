@@ -27,6 +27,7 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 {
     _ = app
         .AddProject<Projects.HexalithApp_WebServer>("securityweb")
+        .WithEnvironmentFromConfiguration("APP_API_TOKEN")
         .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Id", false)
         .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Secret", false)
         .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Google__Id", false)
