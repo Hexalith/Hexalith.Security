@@ -43,10 +43,10 @@ public sealed class HexalithSecurityApiServerModule : IApiServerApplicationModul
     public int OrderWeight => 0;
 
     /// <inheritdoc/>
-    string IApplicationModule.Path => Path;
+    public string Version => _version ??= GetType().Assembly.GetAssemblyVersion() ?? "1.0.0";
 
     /// <inheritdoc/>
-    public string Version => _version ??= GetType().Assembly.GetAssemblyVersion() ?? "1.0.0";
+    string IApplicationModule.Path => Path;
 
     private static string Path => HexalithSecurityApplicationInformation.ShortName;
 
@@ -61,7 +61,7 @@ public sealed class HexalithSecurityApiServerModule : IApiServerApplicationModul
         ArgumentNullException.ThrowIfNull(configuration);
         _ = services.AddIdentityApiEndpoints<CustomUser>()
             .AddUserStore<DaprIdentityStore.Stores.DaprActorUserStore>();
-        _ = services.AddDaprIdentityStoreServer();
+        _ = services.AddDaprIdentityStoreServer(configuration);
         _ = services.AddControllers().AddApplicationPart(typeof(UserPartitionController).Assembly);
     }
 
@@ -74,7 +74,8 @@ public sealed class HexalithSecurityApiServerModule : IApiServerApplicationModul
         ArgumentNullException.ThrowIfNull(actorCollection);
         if (actorCollection is not ActorRegistrationCollection actorRegistrations)
         {
-            throw new ArgumentException($"{nameof(RegisterActors)} parameter must be an {nameof(ActorRegistrationCollection)}. Actual type : {actorCollection.GetType().Name}.", nameof(actorCollection));
+            throw new ArgumentException(
+                $"{nameof(RegisterActors)} parameter must be an {nameof(ActorRegistrationCollection)}. Actual type : {actorCollection.GetType().Name}.", nameof(actorCollection));
         }
 
         actorRegistrations.RegisterSessionActors();
