@@ -1093,7 +1093,10 @@
         }
       },
       "hexalith.dapridentitystore.abstractions": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "Hexalith.Extensions": "[1.0.0, )"
+        }
       },
       "hexalith.domain.abstractions": {
         "type": "Project",

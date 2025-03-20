@@ -27,32 +27,22 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 {
     _ = app
         .AddProject<Projects.HexalithApp_WebServer>("securityweb")
-        .WithEnvironmentFromConfiguration("Hexalith__Security__Disabled")
-        .WithEnvironmentFromConfiguration("Hexalith__Security__EasyAuthMicrosoft")
-        .WithEnvironmentFromConfiguration("Hexalith__Security__EasyAuthGithub")
-        .WithEnvironmentFromConfiguration("Hexalith__Security__EasyAuthGoogle")
-        .WithEnvironmentFromConfiguration("Hexalith__Security__EasyAuthFacebook")
-        .WithEnvironmentFromConfiguration("Hexalith__Security__EasyAuthX")
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Id")
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Secret")
         .WithEnvironmentFromConfiguration("EmailServer__ApplicationSecret")
         .WithEnvironmentFromConfiguration("EmailServer__FromEmail")
-        .WithEnvironmentFromConfiguration("EmailServer__FromName")
-        .WithEnvironmentFromConfiguration("AzureAd__Instance")
-        .WithEnvironmentFromConfiguration("AzureAd__Domain")
-        .WithEnvironmentFromConfiguration("AzureAd__TenantId")
-        .WithEnvironmentFromConfiguration("AzureAd__ClientId");
+        .WithEnvironmentFromConfiguration("EmailServer__FromName");
 }
 
 if (app.IsProjectEnabled<Projects.HexalithApp_ApiServer>())
 {
     _ = app
         .AddProject<Projects.HexalithApp_ApiServer>("securityapi")
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Id")
+        .WithEnvironmentFromConfiguration("Hexalith__DaprIdentityStore__Microsoft__Secret")
         .WithEnvironmentFromConfiguration("EmailServer__ApplicationSecret")
         .WithEnvironmentFromConfiguration("EmailServer__FromEmail")
-        .WithEnvironmentFromConfiguration("EmailServer__FromName")
-        .WithEnvironmentFromConfiguration("AzureAd__Instance")
-        .WithEnvironmentFromConfiguration("AzureAd__Domain")
-        .WithEnvironmentFromConfiguration("AzureAd__TenantId")
-        .WithEnvironmentFromConfiguration("AzureAd__ClientId");
+        .WithEnvironmentFromConfiguration("EmailServer__FromName");
 }
 
 await app
