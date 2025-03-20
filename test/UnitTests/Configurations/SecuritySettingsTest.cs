@@ -4,6 +4,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
+using Hexalith.DaprIdentityStore.Configurations;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Security.Application.Configurations;
 using Hexalith.TestMocks;

@@ -5,6 +5,7 @@ using System.Reflection;
 
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Modules;
+using Hexalith.DaprIdentityStore.Configurations;
 using Hexalith.DaprIdentityStore.UI.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Extensions.Helpers;

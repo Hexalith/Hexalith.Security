@@ -9,6 +9,7 @@ namespace UnitTests.Modules;
 using FluentAssertions;
 
 using Hexalith.Application.Modules.Applications;
+using Hexalith.DaprIdentityStore.Configurations;
 using Hexalith.Security.Application.Configurations;
 using Hexalith.Security.WebApp;
 using Hexalith.Security.WebServer;

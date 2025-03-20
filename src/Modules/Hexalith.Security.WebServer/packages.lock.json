@@ -102,6 +102,16 @@
         "resolved": "9.0.3",
         "contentHash": "r2JRkLjsYrq5Dpo7+y3Wa73OfirZPdVhxiTJWwZ+oJM7FOAe0LkM3GlH+pgkNRdd1G1kwUbmRCdmh4uoaWwu1g=="
       },
+      "AspNet.Security.OAuth.GitHub": {
+        "type": "Transitive",
+        "resolved": "9.1.0",
+        "contentHash": "BiU5E/NwX0CQjUNT1xfgUrtC4wveYGEDBm3PCaL0Q5oQyswO/RtWhrl6y0CTGFf7CrNpesqcoQqXSFFO8aDB3Q=="
+      },
+      "AspNet.Security.OAuth.Twitter": {
+        "type": "Transitive",
+        "resolved": "9.1.0",
+        "contentHash": "sWh/gnzZyXjNpF4SElzrvCKeSxpB6cv0Co7ckgfzAoLGqnTvOk8HQCBaa8J9eoj1xORNQBYVvrwMpUiEwww0eg=="
+      },
       "Azure.Core": {
         "type": "Transitive",
         "resolved": "1.44.1",
@@ -325,6 +335,41 @@
         "contentHash": "mxXNYkHYL7T6NG8cdbodxpixQZfpozBkZj2g+jGCB/sO13RqfUvh9YHd8G2QI5HP24brl+nILJReC3/gzgsrrg==",
         "dependencies": {
           "Google.Protobuf": "[3.13.0, 4.0.0)"
+        }
+      },
+      "Google.Apis": {
+        "type": "Transitive",
+        "resolved": "1.69.0",
+        "contentHash": "1TfjsXFejwIf7iWaE7A0FbnOEsk8FPlbdFAt1r+I8aSMQfLLdSVWCLdZz6TzuWVwoCGEuJUHTZ/FXdptdU3qWw==",
+        "dependencies": {
+          "Google.Apis.Core": "1.69.0"
+        }
+      },
+      "Google.Apis.Auth": {
+        "type": "Transitive",
+        "resolved": "1.69.0",
+        "contentHash": "ar07yxn/s41jdqQ3sMh8EAehiSvXQ9yE1MS4McmZINeSWvolnLHmIZ9Yxj4tHVIYYz0c7H/lpToVqm7C2aYx9g==",
+        "dependencies": {
+          "Google.Apis": "1.69.0",
+          "Google.Apis.Core": "1.69.0",
+          "System.Management": "7.0.2"
+        }
+      },
+      "Google.Apis.Auth.AspNetCore3": {
+        "type": "Transitive",
+        "resolved": "1.69.0",
+        "contentHash": "ChONU4jRaaM406IgSPlffnDhUOe4bv4BjYt7JwtKj5Lu4rAi4TEWEDiaNn95NN5pDlkt+ss87MFtDVXw3MZFfg==",
+        "dependencies": {
+          "Google.Apis.Auth": "1.69.0",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "3.0.3"
+        }
+      },
+      "Google.Apis.Core": {
+        "type": "Transitive",
+        "resolved": "1.69.0",
+        "contentHash": "SXUcurNUPxYMtOnawvB2Av18VrPBC9W7So9q9ikmXIXLGiv4RX7Zbu4kc+8PbwTdd8wLt54r0PBGOT5RaKoTjQ==",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
         }
       },
       "Google.Protobuf": {
@@ -1147,6 +1192,11 @@
           "Humanizer.Core": "[2.14.1]"
         }
       },
+      "Microsoft.AspNetCore.Authentication.Facebook": {
+        "type": "Transitive",
+        "resolved": "9.0.3",
+        "contentHash": "gvDWQzCzvenElKCq4Wtz6tU3iCkyChChE4cDRBHibE+b/AEmclHmJGuvYsLs2NrtMfsvqnZ5j0yIsz/gY6kbgA=="
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer": {
         "type": "Transitive",
         "resolved": "9.0.3",
@@ -1154,6 +1204,11 @@
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
         }
+      },
+      "Microsoft.AspNetCore.Authentication.MicrosoftAccount": {
+        "type": "Transitive",
+        "resolved": "9.0.3",
+        "contentHash": "sZmnwtNHCxrt4XezroKut1M5RDR3SPbgZMnusGzduIqXNSE1Rq6ULNaug8y1C/IkaOgiGwHI9l7Hu3ieyFJSyw=="
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",
@@ -2370,6 +2425,11 @@
           "System.Text.Json": "6.0.9"
         }
       },
+      "System.CodeDom": {
+        "type": "Transitive",
+        "resolved": "7.0.0",
+        "contentHash": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A=="
+      },
       "System.Collections": {
         "type": "Transitive",
         "resolved": "4.3.0",
@@ -2552,6 +2612,14 @@
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0"
+        }
+      },
+      "System.Management": {
+        "type": "Transitive",
+        "resolved": "7.0.2",
+        "contentHash": "/qEUN91mP/MUQmJnM5y5BdT7ZoPuVrtxnFlbJ8a3kBJGhe2wCzBfnPFtK2wTtEEcf3DMGR9J00GZZfg6HRI6yA==",
+        "dependencies": {
+          "System.CodeDom": "7.0.0"
         }
       },
       "System.Memory": {
@@ -2997,11 +3065,16 @@
       "hexalith.dapridentitystore": {
         "type": "Project",
         "dependencies": {
+          "AspNet.Security.OAuth.GitHub": "[9.1.0, )",
+          "AspNet.Security.OAuth.Twitter": "[9.1.0, )",
+          "Google.Apis.Auth.AspNetCore3": "[1.69.0, )",
           "Hexalith.Application.Partitions.Abstractions": "[1.0.0, )",
           "Hexalith.Application.Sessions.Abstractions": "[1.0.0, )",
           "Hexalith.DaprIdentityStore.Abstractions": "[1.0.0, )",
           "Hexalith.Infrastructure.DaprRuntime": "[1.0.0, )",
-          "Microsoft.Extensions.Identity.Stores": "[9.*, )"
+          "Microsoft.AspNetCore.Authentication.Facebook": "[9.0.3, )",
+          "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "[9.0.3, )",
+          "Microsoft.Extensions.Identity.Stores": "[9.0.3, )"
         }
       },
       "hexalith.dapridentitystore.abstractions": {
@@ -3013,7 +3086,7 @@
           "Hexalith.DaprIdentityStore": "[1.0.0, )",
           "Hexalith.DaprIdentityStore.Abstractions": "[1.0.0, )",
           "Hexalith.UI.Components": "[1.0.0, )",
-          "Microsoft.AspNetCore.Components.WebAssembly.Server": "[9.*, )"
+          "Microsoft.AspNetCore.Components.WebAssembly.Server": "[9.0.3, )"
         }
       },
       "hexalith.domain.abstractions": {

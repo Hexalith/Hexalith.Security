@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Extension methods for adding Azure Container App authentication.
 /// </summary>
-public static class AzureContainerAppAuthenticationHelper
+public static class AuthenticationHelper
 {
     /// <summary>
     /// Adds Azure Container App authentication to the specified <see cref="AuthenticationBuilder"/>.

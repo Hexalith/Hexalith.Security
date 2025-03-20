@@ -202,6 +202,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.DaprIdentityStore.UI", "Hexalith.DaprIdentityStore\src\Hexalith.DaprIdentityStore.UI\Hexalith.DaprIdentityStore.UI.csproj", "{C34E8C2A-4E0E-BBED-8BFD-C5727E05447E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexalith.DaprIdentityStore", "Hexalith.DaprIdentityStore", "{D0662561-58FC-4245-B168-DEDC9D519E53}"
+	ProjectSection(SolutionItems) = preProject
+		Hexalith.DaprIdentityStore\src\Directory.Build.props = Hexalith.DaprIdentityStore\src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4B884768-108B-4F83-8343-A8E17F5C2DD1}"
 	ProjectSection(SolutionItems) = preProject
@@ -209,8 +212,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4B884768
 		Hexalith.DaprIdentityStore\.gitignore = Hexalith.DaprIdentityStore\.gitignore
 		Hexalith.DaprIdentityStore\.stylecop.json = Hexalith.DaprIdentityStore\.stylecop.json
 		Hexalith.DaprIdentityStore\.stylecop.ruleset = Hexalith.DaprIdentityStore\.stylecop.ruleset
-		Hexalith.DaprIdentityStore\buildFiles\Dependencies.props = Hexalith.DaprIdentityStore\buildFiles\Dependencies.props
 		Hexalith.DaprIdentityStore\Directory.Build.props = Hexalith.DaprIdentityStore\Directory.Build.props
+		Hexalith.DaprIdentityStore\Directory.Packages.props = Hexalith.DaprIdentityStore\Directory.Packages.props
 		Hexalith.DaprIdentityStore\.github\workflows\hexalith.yml = Hexalith.DaprIdentityStore\.github\workflows\hexalith.yml
 		Hexalith.DaprIdentityStore\.github\workflows\hexalith_sonar_qube.yml = Hexalith.DaprIdentityStore\.github\workflows\hexalith_sonar_qube.yml
 		Hexalith.DaprIdentityStore\LICENSE = Hexalith.DaprIdentityStore\LICENSE
