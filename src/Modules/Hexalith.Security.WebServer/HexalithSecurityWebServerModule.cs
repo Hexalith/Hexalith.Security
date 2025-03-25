@@ -19,7 +19,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Microsoft Security server module.
@@ -121,20 +120,6 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
             throw new InvalidOperationException($"Invalid builder type '{application.GetType().FullName}' for UseSecurity. The expected type is {typeof(WebApplication).FullName}.");
         }
 
-        // initialize modules
-        using IServiceScope scope = app.Services.CreateScope();
-        IOptions<SecuritySettings> settings = scope.ServiceProvider.GetRequiredService<IOptions<SecuritySettings>>();
-
-        // if (settings.Value.UseMsal)
-        // {
-        //    IWebHostEnvironment env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
-        //    if (env.IsDevelopment())
-        //    {
-        //        _ = app.UseMiddleware<DevelopmentAuthenticationMiddleware>();
-        //    }
-
-        // _ = app.UseMiddleware<ContainerAppsAuthenticationMiddleware>();
-        // }
         _ = app
             .UseAuthentication()
             .UseAuthorization();
