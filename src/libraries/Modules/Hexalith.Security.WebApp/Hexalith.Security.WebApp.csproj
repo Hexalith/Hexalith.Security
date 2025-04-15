@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+    <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
+    <ProjectReference Include="..\..\Presentation\Hexalith.Security.UI.Pages\Hexalith.Security.UI.Pages.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"  />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication"  />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"  />
+  </ItemGroup>
+  <ItemGroup >
+    <PackageReference Include="Hexalith.Infrastructure.ClientApp"/>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <UserSecretsId>ec81df23-6b1e-4de8-b8ad-539fbc979451</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Application.Modules.Abstractions" />
+    <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Partitions" />
+    <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Sessions" />
+    <PackageReference Include="Hexalith.DaprIdentityStore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Hexalith.Security.Servers\Hexalith.Security.Servers.csproj" />
+  </ItemGroup>
+</Project>

@@ -12,9 +12,10 @@
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\src\libraries\Hexalith.Security\Hexalith.Security.csproj" />
+    <ProjectReference Include="..\..\src\libraries\Modules\Hexalith.Security.ApiServer\Hexalith.Security.ApiServer.csproj" />
+    <ProjectReference Include="..\..\src\libraries\Modules\Hexalith.Security.WebApp\Hexalith.Security.WebApp.csproj" />
+    <ProjectReference Include="..\..\src\libraries\Modules\Hexalith.Security.WebServer\Hexalith.Security.WebServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

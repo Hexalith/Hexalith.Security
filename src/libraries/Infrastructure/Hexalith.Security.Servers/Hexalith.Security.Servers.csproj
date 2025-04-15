@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Application.Modules.Abstractions" />
+    <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Partitions" />
+    <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Sessions" />
+    <PackageReference Include="Hexalith.DaprIdentityStore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
+  </ItemGroup>
+</Project>
