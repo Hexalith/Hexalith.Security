@@ -11,7 +11,7 @@
     <PackageReference Include="Hexalith.Application.Modules.Abstractions" />
     <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Partitions" />
     <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Sessions" />
-    <PackageReference Include="Hexalith.DaprIdentityStore" />
+    <PackageReference Include="Hexalith.IdentityStores" />
   </ItemGroup>
 
   <ItemGroup>

@@ -20,7 +20,7 @@
   <ItemGroup>
     <PackageReference Include="Hexalith.Infrastructure.DaprRuntime.Sessions" />
     <PackageReference Include="Hexalith.Infrastructure.ClientAppOnServer" />
-    <PackageReference Include="Hexalith.DaprIdentityStore.UI" />
+    <PackageReference Include="Hexalith.IdentityStores.UI" />
   </ItemGroup>
 
 </Project>

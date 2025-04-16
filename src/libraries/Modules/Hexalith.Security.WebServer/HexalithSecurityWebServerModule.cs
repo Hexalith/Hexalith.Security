@@ -10,9 +10,9 @@ using System.Reflection;
 
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Modules;
-using Hexalith.DaprIdentityStore.UI.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Extensions.Helpers;
+using Hexalith.IdentityStores.UI.Helpers;
 using Hexalith.Security.Application;
 using Hexalith.Security.Application.Configurations;
 using Hexalith.Security.Application.Menu;
@@ -55,7 +55,7 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     [
         GetType().Assembly,
         typeof(Hexalith.Security.WebApp.HexalithSecurityWebAppModule).Assembly,
-        typeof(Hexalith.DaprIdentityStore.UI._Imports).Assembly,
+        typeof(Hexalith.IdentityStores.UI._Imports).Assembly,
         typeof(Hexalith.Security.UI.Components._Imports).Assembly,
         typeof(Hexalith.Security.UI.Pages._Imports).Assembly
     ];
@@ -90,7 +90,7 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
 
         _ = services
             .AddCascadingAuthenticationState()
-            .AddDaprIdentityStoreUI(configuration)
+            .AddIdentityStoresUI(configuration)
             .AddSingleton(SecurityMenu.Menu)
             .ConfigureSettings<SecuritySettings>(configuration);
         _ = services

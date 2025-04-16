@@ -8,8 +8,8 @@ namespace Hexalith.Security.Servers.Roles;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.DaprIdentityStore.Models;
-using Hexalith.DaprIdentityStore.Services;
+using Hexalith.IdentityStores.Models;
+using Hexalith.IdentityStores.Services;
 using Hexalith.Security.Application;
 
 using Microsoft.AspNetCore.Identity;

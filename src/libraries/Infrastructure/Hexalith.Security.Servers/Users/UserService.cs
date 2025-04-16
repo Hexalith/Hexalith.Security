@@ -10,8 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application;
-using Hexalith.DaprIdentityStore.Models;
-using Hexalith.DaprIdentityStore.Services;
+using Hexalith.IdentityStores.Models;
+using Hexalith.IdentityStores.Services;
 using Hexalith.Security.Application.Users;
 
 using Microsoft.AspNetCore.Identity;

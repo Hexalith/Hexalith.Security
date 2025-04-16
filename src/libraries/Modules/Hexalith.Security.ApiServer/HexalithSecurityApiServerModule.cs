@@ -10,9 +10,9 @@ using System.Collections.Generic;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Modules.Modules;
-using Hexalith.DaprIdentityStore.Helpers;
-using Hexalith.DaprIdentityStore.Models;
 using Hexalith.Extensions.Helpers;
+using Hexalith.IdentityStores.Helpers;
+using Hexalith.IdentityStores.Models;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Security.Application;
@@ -65,8 +65,8 @@ public sealed class HexalithSecurityApiServerModule : IApiServerApplicationModul
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         _ = services.AddIdentityApiEndpoints<CustomUser>()
-            .AddUserStore<DaprIdentityStore.Stores.DaprActorUserStore>();
-        _ = services.AddDaprIdentityStoreServer(configuration);
+            .AddUserStore<IdentityStores.Stores.DaprActorUserStore>();
+        _ = services.AddIdentityStoresServer(configuration);
         _ = services.AddControllers().AddApplicationPart(typeof(UserPartitionController).Assembly);
     }
 
