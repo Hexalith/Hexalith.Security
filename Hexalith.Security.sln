@@ -153,9 +153,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{7CC0410F-62A1-4F08-A12B-A93273D59763}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{DA826490-861B-4DB3-BC66-C22B3DD2D1FD}"
-	ProjectSection(SolutionItems) = preProject
-		src\libraries\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj = src\libraries\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{CE5B85C8-B607-48A7-A60A-5E25BD456E2E}"
 EndProject
@@ -205,6 +202,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{130E80D2-704
 	ProjectSection(SolutionItems) = preProject
 		HexalithApp\src\Directory.Build.props = HexalithApp\src\Directory.Build.props
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tools", ".tools", "{DC9A83DD-4214-4BFE-A899-FE11376C5E2D}"
+	ProjectSection(SolutionItems) = preProject
+		tools\flush_redis.bat = tools\flush_redis.bat
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Security.Application", "src\libraries\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj", "{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Security.Application.Abstractions", "src\libraries\Application\Hexalith.Security.Application.Abstractions\Hexalith.Security.Application.Abstractions.csproj", "{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -260,6 +266,14 @@ Global
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +315,8 @@ Global
 		{A52EA813-878E-672E-D869-1E522FBD42FE} = {130E80D2-7041-44CA-BD7B-C91E012268A7}
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267} = {130E80D2-7041-44CA-BD7B-C91E012268A7}
 		{130E80D2-7041-44CA-BD7B-C91E012268A7} = {823838AC-6041-430A-9BBA-E54D3F4CF43B}
+		{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D} = {DA826490-861B-4DB3-BC66-C22B3DD2D1FD}
+		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC} = {DA826490-861B-4DB3-BC66-C22B3DD2D1FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}
