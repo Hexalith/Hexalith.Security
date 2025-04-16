@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <HexalithModulesServerProps>$([MSBuild]::GetPathOfFileAbove('Hexalith.Modules.WebServer.props', '$(MSBuildThisFileDirectory)..'))</HexalithModulesServerProps>
+  </PropertyGroup>
+  <Import Project="$(HexalithModulesServerProps)" Condition=" '$(HexalithModulesServerProps)' != '' " />
+  <ItemGroup>
+    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Modules\Hexalith.Security.WebApp\Hexalith.Security.WebApp.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Modules\Hexalith.Security.WebServer\Hexalith.Security.WebServer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)src/HexalithSecurityWebServerApplication.cs" />
+  </ItemGroup>
+</Project>
