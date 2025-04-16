@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>27a51c7d-167f-42d6-97fa-cc6d035c2019</UserSecretsId>
+    <UserSecretsId>Hexalith.Security</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
