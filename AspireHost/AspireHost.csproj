@@ -6,11 +6,16 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>Hexalith.Security</UserSecretsId>
+    <UserSecretsId>HexalithAspireHost</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" />
+    <PackageReference Include="Hexalith.NetAspire.Hosting" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HexalithApp\src\HexalithApp.ApiServer\HexalithApp.ApiServer.csproj" />
+    <ProjectReference Include="..\HexalithApp\src\HexalithApp.WebServer\HexalithApp.WebServer.csproj" />
   </ItemGroup>
 
 </Project>
