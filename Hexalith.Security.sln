@@ -179,6 +179,30 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Security.WebServer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireHost", "AspireHost\AspireHost.csproj", "{17C47AFF-EC8E-4572-A959-FE33AFAE16F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HexalithApp", "HexalithApp", "{823838AC-6041-430A-9BBA-E54D3F4CF43B}"
+	ProjectSection(SolutionItems) = preProject
+		HexalithApp\.editorconfig = HexalithApp\.editorconfig
+		HexalithApp\.git = HexalithApp\.git
+		HexalithApp\.gitignore = HexalithApp\.gitignore
+		HexalithApp\.stylecop.json = HexalithApp\.stylecop.json
+		HexalithApp\.stylecop.ruleset = HexalithApp\.stylecop.ruleset
+		HexalithApp\Directory.Build.props = HexalithApp\Directory.Build.props
+		HexalithApp\Directory.Packages.props = HexalithApp\Directory.Packages.props
+		HexalithApp\Hexalith.Modules.ApiServer.props = HexalithApp\Hexalith.Modules.ApiServer.props
+		HexalithApp\Hexalith.Modules.WebApp.props = HexalithApp\Hexalith.Modules.WebApp.props
+		HexalithApp\Hexalith.Modules.WebServer.props = HexalithApp\Hexalith.Modules.WebServer.props
+		HexalithApp\LICENSE = HexalithApp\LICENSE
+		HexalithApp\README.md = HexalithApp\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{DEEB2DC7-6E66-4189-9738-3B731EEA6CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexalithApp.ApiServer", "HexalithApp\src\HexalithApp.ApiServer\HexalithApp.ApiServer.csproj", "{7E806F0B-2EA0-EC52-9F07-5A874BB548DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexalithApp.WebApp", "HexalithApp\src\HexalithApp.WebApp\HexalithApp.WebApp.csproj", "{A52EA813-878E-672E-D869-1E522FBD42FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexalithApp.WebServer", "HexalithApp\src\HexalithApp.WebServer\HexalithApp.WebServer.csproj", "{73984AC1-4B34-15A1-2D11-A5831AE1B267}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +245,18 @@ Global
 		{17C47AFF-EC8E-4572-A959-FE33AFAE16F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17C47AFF-EC8E-4572-A959-FE33AFAE16F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17C47AFF-EC8E-4572-A959-FE33AFAE16F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E806F0B-2EA0-EC52-9F07-5A874BB548DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E806F0B-2EA0-EC52-9F07-5A874BB548DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E806F0B-2EA0-EC52-9F07-5A874BB548DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E806F0B-2EA0-EC52-9F07-5A874BB548DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52EA813-878E-672E-D869-1E522FBD42FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52EA813-878E-672E-D869-1E522FBD42FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52EA813-878E-672E-D869-1E522FBD42FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52EA813-878E-672E-D869-1E522FBD42FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -233,6 +269,7 @@ Global
 		{884D0EEB-6F10-4783-A58F-178A17DF1131} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{339097B8-FCFF-4AD2-8535-C6FA645ED419} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{937479F4-6FD2-4D2B-8B2A-5BAEA8EA13B4} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
+		{DA4446BE-296C-40E4-B0FF-05F9AF0F2502} = {DEEB2DC7-6E66-4189-9738-3B731EEA6CFF}
 		{361A8C05-7F6F-4BA3-8321-59A94294831A} = {DA4446BE-296C-40E4-B0FF-05F9AF0F2502}
 		{A52F7525-CCC2-40B5-8250-FC69502D355C} = {DA4446BE-296C-40E4-B0FF-05F9AF0F2502}
 		{995F348D-8EAF-42B4-8838-A193F6026A9F} = {DA4446BE-296C-40E4-B0FF-05F9AF0F2502}
@@ -257,6 +294,10 @@ Global
 		{3C879E4B-8457-D17E-70A7-7FBB6F1FCD02} = {7CC0410F-62A1-4F08-A12B-A93273D59763}
 		{FD57B87C-08CF-BD41-E827-5B2F0ED3D1E2} = {7CC0410F-62A1-4F08-A12B-A93273D59763}
 		{1803FEB8-1C35-D676-26E9-D09533941F49} = {7CC0410F-62A1-4F08-A12B-A93273D59763}
+		{823838AC-6041-430A-9BBA-E54D3F4CF43B} = {DEEB2DC7-6E66-4189-9738-3B731EEA6CFF}
+		{7E806F0B-2EA0-EC52-9F07-5A874BB548DB} = {823838AC-6041-430A-9BBA-E54D3F4CF43B}
+		{A52EA813-878E-672E-D869-1E522FBD42FE} = {823838AC-6041-430A-9BBA-E54D3F4CF43B}
+		{73984AC1-4B34-15A1-2D11-A5831AE1B267} = {823838AC-6041-430A-9BBA-E54D3F4CF43B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}
