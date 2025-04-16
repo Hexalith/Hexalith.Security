@@ -10,6 +10,9 @@
     <PackageReference Include="Hexalith.UI.Components.Abstractions" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hexalith.Security.Application.Abstractions\Hexalith.Security.Application.Abstractions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Resources\Modules\SecurityMenu.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -1,22 +1,41 @@
 ﻿@inject IRoleService RoleService
-@using Labels = Hexalith.Security.UI.Components.Resources.Roles.RoleSummaryGrid
+@using Hexalith.Security.Application
+@using Labels = Hexalith.Security.UI.Components.Resources.Roles.Roles
 
-<FluentDataGrid TGridItem="RoleSummaryViewModel" Items="@_users?.AsQueryable()" ResizableColumns="true">
+<FluentDataGrid TGridItem="RoleSummaryViewModel" Items="@_roles?.AsQueryable()" ResizableColumns="true"
+                OnRowClick="HandleRowClick" Selectable SelectionMode="SelectionMode.Single">
     <PropertyColumn Property="@(p => p.Id)" Title="@Labels.Id" />
     <PropertyColumn Property="@(p => p.Name)" Title="@Labels.Name" />
+    <TemplateColumn Title="@Labels.Actions">
+        <FluentStack Orientation="Orientation.Horizontal">
+            <FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Details/{context.Id}")">@Labels.Details</FluentAnchor>
+            <FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Edit/{context.Id}")">@Labels.Edit</FluentAnchor>
+        </FluentStack>
+    </TemplateColumn>
 </FluentDataGrid>
-@if (_users is null)
+@if (_roles is null)
 {
     <FluentProgressRing />
 }
 
 
 @code {
-    private IEnumerable<RoleSummaryViewModel>? _users;
+    [Parameter]
+    public EventCallback<string> OnRoleClick { get; set; }
+
+    private IEnumerable<RoleSummaryViewModel>? _roles;
 
     protected override async Task OnInitializedAsync()
     {
-        _users = await RoleService.GetAllAsync(CancellationToken.None);
+        _roles = await RoleService.GetAllAsync(CancellationToken.None);
         await base.OnInitializedAsync();
+    }
+    
+    private async Task HandleRowClick(FluentDataGridRow<RoleSummaryViewModel> args)
+    {
+        if (args.Item != null)
+        {
+            await OnRoleClick.InvokeAsync(args.Item.Id);
+        }
     }
 }

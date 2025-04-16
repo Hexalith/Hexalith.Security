@@ -17,10 +17,10 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Update="Resources\Roles\RoleIndex.Designer.cs">
+    <Compile Update="Resources\Roles\Roles.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>RoleIndex.resx</DependentUpon>
+      <DependentUpon>Roles.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\Users\UserIndex.Designer.cs">
       <DependentUpon>UserIndex.resx</DependentUpon>
@@ -34,8 +34,8 @@
       <LastGenOutput>PartitionIndex.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Roles\RoleIndex.resx">
-      <LastGenOutput>RoleIndex.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\Roles\Roles.resx">
+      <LastGenOutput>Roles.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Users\UserIndex.resx">

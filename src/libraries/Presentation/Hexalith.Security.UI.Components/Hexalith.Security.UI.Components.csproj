@@ -6,15 +6,15 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Http"  />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web"  />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization"  />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"  />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
   </ItemGroup>
-  <ItemGroup >
-    <PackageReference Include="Hexalith.Application.Sessions.Abstractions"/>
-    <PackageReference Include="Hexalith.Application.Partitions.Abstractions"/>
-    <PackageReference Include="Hexalith.UI.Components"/>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Application.Sessions.Abstractions" />
+    <PackageReference Include="Hexalith.Application.Partitions.Abstractions" />
+    <PackageReference Include="Hexalith.UI.Components" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
@@ -25,13 +25,13 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Update="Resources\Roles\RoleSummaryGrid.Designer.cs">
+    <Compile Update="Resources\Roles\Roles.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>RoleSummaryGrid.resx</DependentUpon>
+      <DependentUpon>Roles.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Users\UserSummaryGrid.Designer.cs">
-      <DependentUpon>UserSummaryGrid.resx</DependentUpon>
+    <Compile Update="Resources\Users\Users.Designer.cs">
+      <DependentUpon>Users.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -41,12 +41,12 @@
       <LastGenOutput>PartitionSummaryGrid.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Roles\RoleSummaryGrid.resx">
-      <LastGenOutput>RoleSummaryGrid.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\Roles\Roles.resx">
+      <LastGenOutput>Roles.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Users\UserSummaryGrid.resx">
-      <LastGenOutput>UserSummaryGrid.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\Users\Users.resx">
+      <LastGenOutput>Users.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,0 +1,116 @@
+@page "/Security/Role/Edit/{RoleId}"
+@rendermode InteractiveServer
+@inject IRoleService RoleService
+@using Hexalith.Security.Application
+@inject NavigationManager NavigationManager
+@using Labels = Hexalith.Security.UI.Pages.Resources.Roles.Roles
+
+<FluentStack Orientation="Orientation.Vertical">
+    <FluentLabel Typo="Typography.PageTitle">@Labels.EditTitle</FluentLabel>
+    
+    @if (_isLoading)
+    {
+        <FluentProgressRing />
+    }
+    else if (_role == null)
+    {
+        <FluentLabel>@Labels.RoleNotFound</FluentLabel>
+    }
+    else
+    {
+        <FluentStack Orientation="Orientation.Vertical" >
+            <FluentLabel>@Labels.Id</FluentLabel>
+            <FluentTextField @bind-Value="@_roleId" Disabled="true" />
+        </FluentStack>
+        
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel>@Labels.Name</FluentLabel>
+            <FluentTextField @bind-Value="@_roleName" />
+        </FluentStack>
+        
+        <FluentStack Orientation="Orientation.Horizontal" >
+            <FluentButton @onclick="UpdateRoleAsync">@Labels.Save</FluentButton>
+            <FluentButton @onclick="NavigateToList">@Labels.Cancel</FluentButton>
+            <FluentButton @onclick="DeleteRoleAsync">@Labels.Delete</FluentButton>
+        </FluentStack>
+    }
+</FluentStack>
+
+@code {
+    [Parameter]
+    public string RoleId { get; set; } = string.Empty;
+
+    private RoleSummaryViewModel? _role;
+    private string _roleId = string.Empty;
+    private string _roleName = string.Empty;
+    private bool _isLoading = true;
+    private bool _isProcessing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoleAsync();
+    }
+
+    private async Task LoadRoleAsync()
+    {
+        try
+        {
+            _isLoading = true;
+            if (!string.IsNullOrEmpty(RoleId))
+            {
+                _role = await RoleService.GetByIdAsync(RoleId, CancellationToken.None);
+                if (_role != null)
+                {
+                    _roleId = _role.Id;
+                    _roleName = _role.Name ?? string.Empty;
+                }
+            }
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+
+    private async Task UpdateRoleAsync()
+    {
+        if (_isProcessing) return;
+        if (string.IsNullOrWhiteSpace(_roleName))
+        {
+            // TODO: Show validation error
+            return;
+        }
+
+        try
+        {
+            _isProcessing = true;
+            await RoleService.UpdateAsync(_roleId, _roleName, CancellationToken.None);
+            NavigateToList();
+        }
+        finally
+        {
+            _isProcessing = false;
+        }
+    }
+
+    private async Task DeleteRoleAsync()
+    {
+        if (_isProcessing) return;
+
+        try
+        {
+            _isProcessing = true;
+            await RoleService.DeleteAsync(_roleId, CancellationToken.None);
+            NavigateToList();
+        }
+        finally
+        {
+            _isProcessing = false;
+        }
+    }
+
+    private void NavigateToList()
+    {
+        NavigationManager.NavigateTo("/Security/Role");
+    }
+} 

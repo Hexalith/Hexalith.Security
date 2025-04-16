@@ -1,9 +1,24 @@
 ﻿@page "/Security/Role"
 @rendermode InteractiveServer
-@using Labels = Hexalith.Security.UI.Pages.Resources.Roles.RoleIndex
-
-<FluentLabel Typo="Typography.PageTitle">@Labels.Title</FluentLabel>
-<RoleSummaryGrid/>
+@inject NavigationManager NavigationManager
+@using Hexalith.Security.Application
+@using Labels = Hexalith.Security.UI.Pages.Resources.Roles.Roles
+<FluentToolbar Style="width:100%;">
+    <FluentButton Appearance="Appearance.Accent" @onclick="NavigateToCreate">@Labels.Create</FluentButton>
+</FluentToolbar>
+<FluentStack Orientation="Orientation.Vertical">
+     <FluentLabel Typo="Typography.PageTitle">@Labels.ListTitle</FluentLabel>
+    <RoleSummaryGrid OnRoleClick="NavigateToEdit" />
+</FluentStack>
 
 @code {
+    private void NavigateToCreate()
+    {
+        NavigationManager.NavigateTo("/Security/Role/Create");
+    }
+
+    private void NavigateToEdit(string roleId)
+    {
+        NavigationManager.NavigateTo($"/Security/Role/Edit/{roleId}");
+    }
 }

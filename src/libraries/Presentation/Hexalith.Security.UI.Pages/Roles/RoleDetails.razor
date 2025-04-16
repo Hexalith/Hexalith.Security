@@ -1,0 +1,82 @@
+@page "/Security/Role/Details/{RoleId}"
+@rendermode InteractiveServer
+@inject IRoleService RoleService
+@inject NavigationManager NavigationManager
+@using Hexalith.Security.Application
+@using Labels = Hexalith.Security.UI.Pages.Resources.Roles.Roles
+
+<FluentStack Orientation="Orientation.Vertical" >
+    <FluentLabel Typo="Typography.PageTitle">@Labels.DetailsTitle</FluentLabel>
+    
+    @if (_isLoading)
+    {
+        <FluentProgressRing />
+    }
+    else if (_role == null)
+    {
+        <FluentLabel>@Labels.RoleNotFound</FluentLabel>
+    }
+    else
+    {
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel>@Labels.Id</FluentLabel>
+            <FluentTextField @bind-Value="@_roleId" Disabled="true" />
+        </FluentStack>
+        
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel>@Labels.Name</FluentLabel>
+            <FluentTextField @bind-Value="@_roleName" Disabled="true" />
+        </FluentStack>
+        
+        <FluentStack Orientation="Orientation.Horizontal">
+            <FluentButton Appearance="Appearance.Accent" @onclick="NavigateToEdit">@Labels.Edit</FluentButton>
+            <FluentButton @onclick="NavigateToList">@Labels.Back</FluentButton>
+        </FluentStack>
+    }
+</FluentStack>
+
+@code {
+    [Parameter]
+    public string RoleId { get; set; } = string.Empty;
+
+    private RoleSummaryViewModel? _role;
+    private string _roleId = string.Empty;
+    private string _roleName = string.Empty;
+    private bool _isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoleAsync();
+    }
+
+    private async Task LoadRoleAsync()
+    {
+        try
+        {
+            _isLoading = true;
+            if (!string.IsNullOrEmpty(RoleId))
+            {
+                _role = await RoleService.GetByIdAsync(RoleId, CancellationToken.None);
+                if (_role != null)
+                {
+                    _roleId = _role.Id;
+                    _roleName = _role.Name ?? string.Empty;
+                }
+            }
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+
+    private void NavigateToEdit()
+    {
+        NavigationManager.NavigateTo($"/Security/Role/Edit/{RoleId}");
+    }
+
+    private void NavigateToList()
+    {
+        NavigationManager.NavigateTo("/Security/Role");
+    }
+} 

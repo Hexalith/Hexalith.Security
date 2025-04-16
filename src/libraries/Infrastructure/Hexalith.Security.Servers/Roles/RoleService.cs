@@ -10,51 +10,99 @@ using System.Threading.Tasks;
 
 using Hexalith.DaprIdentityStore.Models;
 using Hexalith.DaprIdentityStore.Services;
-using Hexalith.Security.Application.Roles;
+using Hexalith.Security.Application;
 
 using Microsoft.AspNetCore.Identity;
 
 /// <summary>
-/// Service for managing users.
+/// Service for managing roles.
 /// </summary>
-public class RoleService : IRoleService
+public class RoleService(
+    IRoleCollectionService roleCollectionService,
+    IRoleStore<CustomRole> roleStore) : IRoleService
 {
-    private readonly IRoleCollectionService _userCollectionService;
-    private readonly IRoleStore<CustomRole> _userStore;
+    private readonly IRoleCollectionService _roleCollectionService = roleCollectionService ?? throw new ArgumentNullException(nameof(roleCollectionService));
+    private readonly IRoleStore<CustomRole> _roleStore = roleStore ?? throw new ArgumentNullException(nameof(roleStore));
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RoleService"/> class.
+    /// Creates a role with the specified name.
     /// </summary>
-    /// <param name="userCollectionService">The user collection service.</param>
-    /// <param name="userStore">The user store.</param>
-    public RoleService(
-        IRoleCollectionService userCollectionService,
-        IRoleStore<CustomRole> userStore)
+    /// <param name="roleName">The name of the role.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the role summary view model.</returns>
+    public async Task<RoleSummaryViewModel> CreateAsync(string roleName, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(userCollectionService);
-        ArgumentNullException.ThrowIfNull(userStore);
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleName);
 
-        _userCollectionService = userCollectionService;
-        _userStore = userStore;
+        var role = new CustomRole { Name = roleName };
+        _ = await _roleStore.CreateAsync(role, cancellationToken).ConfigureAwait(false);
+        return new RoleSummaryViewModel(role.Id, role.Name);
     }
 
     /// <summary>
-    /// Gets all users asynchronously.
+    /// Deletes a role with the specified identifier.
+    /// </summary>
+    /// <param name="roleId">The role identifier.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    public async Task DeleteAsync(string roleId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+
+        CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false) ?? throw new InvalidOperationException($"Role with ID '{roleId}' not found.");
+        _ = await _roleStore.DeleteAsync(role, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Gets all roles asynchronously.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task that represents the asynchronous operation. The task result contains a collection of user summary view models.</returns>
+    /// <returns>A task that represents the asynchronous operation. The task result contains a collection of role summary view models.</returns>
     public async Task<IEnumerable<RoleSummaryViewModel>> GetAllAsync(CancellationToken cancellationToken)
     {
-        IEnumerable<string> ids = await _userCollectionService.AllAsync().ConfigureAwait(false);
+        IEnumerable<string> ids = await _roleCollectionService.AllAsync().ConfigureAwait(false);
         List<Task<CustomRole?>> roleTasks = [];
         foreach (string id in ids)
         {
-            roleTasks.Add(_userStore.FindByIdAsync(id, cancellationToken));
+            roleTasks.Add(_roleStore.FindByIdAsync(id, cancellationToken));
         }
 
         return (await Task.WhenAll(roleTasks).ConfigureAwait(false))
                 .OfType<CustomRole>()
                 .Select(p => new RoleSummaryViewModel(p.Id, p.Name))
                 .OrderBy(p => p.Name);
+    }
+
+    /// <summary>
+    /// Gets a role by its identifier.
+    /// </summary>
+    /// <param name="roleId">The role identifier.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the role summary view model, or null if the role was not found.</returns>
+    public async Task<RoleSummaryViewModel?> GetByIdAsync(string roleId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+
+        CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false);
+        return role == null ? null : new RoleSummaryViewModel(role.Id, role.Name);
+    }
+
+    /// <summary>
+    /// Updates a role with the specified identifier and name.
+    /// </summary>
+    /// <param name="roleId">The role identifier.</param>
+    /// <param name="roleName">The new name of the role.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the updated role summary view model.</returns>
+    public async Task<RoleSummaryViewModel> UpdateAsync(string roleId, string roleName, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleName);
+
+        CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false) ?? throw new InvalidOperationException($"Role with ID '{roleId}' not found.");
+        await _roleStore.SetRoleNameAsync(role, roleName, cancellationToken).ConfigureAwait(false);
+        _ = await _roleStore.UpdateAsync(role, cancellationToken).ConfigureAwait(false);
+
+        return new RoleSummaryViewModel(role.Id, role.Name);
     }
 }
