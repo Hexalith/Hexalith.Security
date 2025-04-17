@@ -212,6 +212,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Security.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Security.Application.Abstractions", "src\libraries\Application\Hexalith.Security.Application.Abstractions\Hexalith.Security.Application.Abstractions.csproj", "{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexalith.IdentityStores", "Hexalith.IdentityStores", "{0351A7AE-BA33-4EEB-A1A7-5A3215D86441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.IdentityStores.Abstractions", "..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores.Abstractions\Hexalith.IdentityStores.Abstractions.csproj", "{3B94B6E9-A228-8466-9DAE-2A485E53E36F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.IdentityStores", "..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores\Hexalith.IdentityStores.csproj", "{76315C0D-81F0-0AF1-1B4B-7F54518AF889}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.IdentityStores.UI", "..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores.UI\Hexalith.IdentityStores.UI.csproj", "{C5EDED77-C541-93D8-51FD-CCBB84C34B60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,6 +282,18 @@ Global
 		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B94B6E9-A228-8466-9DAE-2A485E53E36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B94B6E9-A228-8466-9DAE-2A485E53E36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B94B6E9-A228-8466-9DAE-2A485E53E36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B94B6E9-A228-8466-9DAE-2A485E53E36F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76315C0D-81F0-0AF1-1B4B-7F54518AF889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76315C0D-81F0-0AF1-1B4B-7F54518AF889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76315C0D-81F0-0AF1-1B4B-7F54518AF889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76315C0D-81F0-0AF1-1B4B-7F54518AF889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5EDED77-C541-93D8-51FD-CCBB84C34B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5EDED77-C541-93D8-51FD-CCBB84C34B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5EDED77-C541-93D8-51FD-CCBB84C34B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5EDED77-C541-93D8-51FD-CCBB84C34B60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -317,6 +337,10 @@ Global
 		{130E80D2-7041-44CA-BD7B-C91E012268A7} = {823838AC-6041-430A-9BBA-E54D3F4CF43B}
 		{C57FF5C3-DFC0-18AA-7A35-204B9D0EFF9D} = {DA826490-861B-4DB3-BC66-C22B3DD2D1FD}
 		{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC} = {DA826490-861B-4DB3-BC66-C22B3DD2D1FD}
+		{0351A7AE-BA33-4EEB-A1A7-5A3215D86441} = {DEEB2DC7-6E66-4189-9738-3B731EEA6CFF}
+		{3B94B6E9-A228-8466-9DAE-2A485E53E36F} = {0351A7AE-BA33-4EEB-A1A7-5A3215D86441}
+		{76315C0D-81F0-0AF1-1B4B-7F54518AF889} = {0351A7AE-BA33-4EEB-A1A7-5A3215D86441}
+		{C5EDED77-C541-93D8-51FD-CCBB84C34B60} = {0351A7AE-BA33-4EEB-A1A7-5A3215D86441}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}

@@ -9,11 +9,7 @@
     <ProjectReference Include="..\..\Presentation\Hexalith.Security.UI.Pages\Hexalith.Security.UI.Pages.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"  />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication"  />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"  />
-  </ItemGroup>
-  <ItemGroup >
-    <PackageReference Include="Hexalith.Infrastructure.ClientApp"/>
+    <PackageReference Include="Hexalith.Application.Modules" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" />
   </ItemGroup>
 </Project>
