@@ -52,6 +52,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{884D0EEB-6F10-4783-A58F-178A17DF1131}"
 	ProjectSection(SolutionItems) = preProject
 		src\libraries\Directory.Build.props = src\libraries\Directory.Build.props
+		src\HexalithSecurityApiServerApplication.cs = src\HexalithSecurityApiServerApplication.cs
+		src\HexalithSecurityWebAppApplication.cs = src\HexalithSecurityWebAppApplication.cs
+		src\HexalithSecurityWebServerApplication.cs = src\HexalithSecurityWebServerApplication.cs
 		src\libraries\README.md = src\libraries\README.md
 	EndProjectSection
 EndProject
