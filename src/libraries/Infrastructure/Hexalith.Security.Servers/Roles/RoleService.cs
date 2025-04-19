@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Identity;
 /// <summary>
 /// Service for managing roles.
 /// </summary>
+/// <param name="roleCollectionService">The role collection service.</param>
+/// <param name="roleStore">The role store.</param>
 public class RoleService(
     IRoleCollectionService roleCollectionService,
     IRoleStore<CustomRole> roleStore) : IRoleService
@@ -45,11 +47,13 @@ public class RoleService(
     /// <param name="roleId">The role identifier.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <exception cref="InvalidOperationException">Thrown if the role with the specified identifier is not found.</exception>
     public async Task DeleteAsync(string roleId, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
 
-        CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false) ?? throw new InvalidOperationException($"Role with ID '{roleId}' not found.");
+        CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false)
+            ?? throw new InvalidOperationException($"Role with ID '{roleId}' not found.");
         _ = await _roleStore.DeleteAsync(role, cancellationToken).ConfigureAwait(false);
     }
 
@@ -94,6 +98,7 @@ public class RoleService(
     /// <param name="roleName">The new name of the role.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the updated role summary view model.</returns>
+    /// <exception cref="InvalidOperationException">Thrown if the role with the specified identifier is not found.</exception>
     public async Task<RoleSummaryViewModel> UpdateAsync(string roleId, string roleName, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(roleId);

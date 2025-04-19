@@ -10,6 +10,10 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Represents the client principal information.
 /// </summary>
+/// <param name="IdentityProvider">The identity provider.</param>
+/// <param name="Claims">The claims associated with the client principal.</param>
+/// <param name="NameClaimType">The name claim type.</param>
+/// <param name="RoleClaimType">The role claim type.</param>
 [DataContract]
 public record ClientPrincipal(
     [property: DataMember(Name = "auth_typ")] string IdentityProvider,

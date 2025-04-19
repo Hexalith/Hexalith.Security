@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <NoWarn>$(NoWarn);IDE0079;RCS1251;</NoWarn>
+    <NoWarn>$(NoWarn);IDE0079;RCS1251;IDE0065;IDE0160;</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="coverlet.collector" />
@@ -16,11 +16,11 @@
     <ProjectReference Include="..\..\HexalithApp\src\HexalithApp.ApiServer\HexalithApp.ApiServer.csproj" />
     <ProjectReference Include="..\..\HexalithApp\src\HexalithApp.WebServer\HexalithApp.WebServer.csproj" />
   </ItemGroup>
-  <ItemGroup>
+  <!--<ItemGroup>
     <Compile Include="../../src/HexalithSecurityApiServerApplication.cs" />
     <Compile Include="../../src/HexalithSecurityWebServerApplication.cs" />
     <Compile Include="../../src/HexalithSecurityWebAppApplication.cs" />
-  </ItemGroup>
+  </ItemGroup>-->
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>

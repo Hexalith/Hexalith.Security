@@ -151,13 +151,10 @@ public class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public async Task RemoveGlobalAdministratorAsync(string userId, CancellationToken cancellationToken)
-    {
-        await _claimStore.RemoveClaimsAsync(
+    public async Task RemoveGlobalAdministratorAsync(string userId, CancellationToken cancellationToken) => await _claimStore.RemoveClaimsAsync(
             new CustomUser { Id = userId },
             [new Claim(ClaimTypes.Role, ApplicationRoles.GlobalAdministrator)],
             cancellationToken).ConfigureAwait(false);
-    }
 
     /// <inheritdoc/>
     public Task UpdateAsync(UserEditViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();

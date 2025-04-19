@@ -13,10 +13,10 @@ public enum SecurityType
     /// <summary>
     /// Represents the Microsoft EntraId Security type.
     /// </summary>
-    MicrosoftEntraId,
+    MicrosoftEntraId = 0,
 
     /// <summary>
     /// Represents the Security type.
     /// </summary>
-    Security,
+    Security = 1,
 }

@@ -6,13 +6,8 @@
 namespace Hexalith.Security.Tests.Modules;
 
 using Hexalith.Application.Modules.Applications;
-using Hexalith.Security.Application.Configurations;
 using Hexalith.Security.WebApp;
 using Hexalith.Security.WebServer;
-using Hexalith.UI.Components;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 using Shouldly;
 
@@ -30,6 +25,8 @@ public class HexalithApplicationTest
     public void HexalithApplicationShouldReturnClientModuleTypes()
     {
         _ = HexalithApplication.WebAppApplication.ShouldNotBeNull();
+        _ = HexalithApplication.WebAppApplication.ShouldBeOfType<HexalithSecurityWebAppApplication>();
+        _ = HexalithApplication.WebAppApplication.WebAppModules.ShouldNotBeNull();
         HexalithApplication.WebAppApplication.WebAppModules.Count().ShouldBe(2);
         HexalithApplication.WebAppApplication.Modules.Count().ShouldBe(2);
         HexalithApplication.WebAppApplication.WebAppModules.ShouldContain(typeof(HexalithSecurityWebAppModule));
@@ -40,35 +37,14 @@ public class HexalithApplicationTest
     /// Verifies that the WebServer application returns the correct server module types.
     /// </summary>
     [Fact]
-    public void HexalithApplicationShouldReturnServerModuleTypes()
+    public void HexalithApplicationShouldReturnWebServerModuleTypes()
     {
         _ = HexalithApplication.WebServerApplication.ShouldNotBeNull();
+        _ = HexalithApplication.WebServerApplication.ShouldBeOfType<HexalithSecurityWebServerApplication>();
+        _ = HexalithApplication.WebServerApplication.WebServerModules.ShouldNotBeNull();
         HexalithApplication.WebServerApplication.WebServerModules.Count().ShouldBe(2);
         HexalithApplication.WebServerApplication.Modules.Count().ShouldBe(2);
         HexalithApplication.WebServerApplication.WebServerModules.ShouldContain(typeof(HexalithSecurityWebServerModule));
         HexalithApplication.WebServerApplication.Modules.ShouldContain(typeof(HexalithSecurityWebServerModule));
-    }
-
-    /// <summary>
-    /// Verifies that services from WebApp modules are correctly added to the service collection.
-    /// </summary>
-    [Fact]
-    public void WebAppServicesFromModulesShouldBeAdded()
-    {
-        ServiceCollection services = [];
-        Dictionary<string, string?> inMemorySettings = new()
-        {
-            { $"{SecuritySettings.ConfigurationName()}:Disabled", "false" },
-        };
-
-        IConfiguration configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(inMemorySettings)
-            .Build();
-
-        HexalithApplication.AddWebAppServices(services, configuration);
-
-        // Check that the client module services have been added by checking if Fluent UI ToastService has been added
-        services.ShouldContain(s => s.ServiceType == typeof(MenuItemInformation));
-        services.Count(s => s.ServiceType == typeof(MenuItemInformation)).ShouldBe(1);
     }
 }

@@ -49,8 +49,8 @@ public sealed class HexalithSecurityWebAppModule : IWebAppApplicationModule
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies => [
         GetType().Assembly,
-        typeof(Hexalith.Security.UI.Components._Imports).Assembly,
-        typeof(Hexalith.Security.UI.Pages._Imports).Assembly
+        typeof(UI.Components._Imports).Assembly,
+        typeof(UI.Pages._Imports).Assembly
     ];
 
     /// <inheritdoc/>
@@ -66,6 +66,9 @@ public sealed class HexalithSecurityWebAppModule : IWebAppApplicationModule
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when the security settings section cannot be loaded or when the web application is not initialized.
+    /// </exception>
     public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
         SecuritySettings settings = configuration.GetSettings<SecuritySettings>()

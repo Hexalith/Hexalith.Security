@@ -10,6 +10,8 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Represents a claim associated with the client principal.
 /// </summary>
+/// <param name="Type">The type of the claim.</param>
+/// <param name="Value">The value of the claim.</param>
 [DataContract]
 public record ClientPrincipalClaim(
     [property: DataMember(Name = "typ")] string Type,

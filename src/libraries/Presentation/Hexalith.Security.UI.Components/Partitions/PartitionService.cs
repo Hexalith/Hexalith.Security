@@ -19,11 +19,9 @@ public class PartitionService : IPartitionViewModelService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains a collection of user summary view models.</returns>
     public Task<IEnumerable<PartitionSummaryViewModel>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return Task.FromResult<IEnumerable<PartitionSummaryViewModel>>([
+        => Task.FromResult<IEnumerable<PartitionSummaryViewModel>>([
             new PartitionSummaryViewModel("1", "Partition 1"),
             new PartitionSummaryViewModel("2", "Partition 2"),
             new PartitionSummaryViewModel("3", "Partition 3")
         ]);
-    }
 }

@@ -73,6 +73,7 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
+    /// <exception cref="InvalidOperationException">Thrown when the security settings section cannot be loaded or when the web server application is not initialized.</exception>
     public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
         SecuritySettings settings = configuration.GetSettings<SecuritySettings>()
@@ -105,6 +106,8 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     }
 
     /// <inheritdoc/>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="application"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if <paramref name="application"/> is not of type <see cref="WebApplication"/>.</exception>
     public void UseModule(object application)
     {
         ArgumentNullException.ThrowIfNull(application);
@@ -117,6 +120,8 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     }
 
     /// <inheritdoc/>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="application"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if <paramref name="application"/> is not of type <see cref="WebApplication"/>.</exception>
     public void UseSecurity(object application)
     {
         ArgumentNullException.ThrowIfNull(application);

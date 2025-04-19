@@ -12,6 +12,7 @@ using Hexalith.Extensions.Configuration;
 /// <summary>
 /// Security settings.
 /// </summary>
+/// <param name="Disabled"> Indicates if the security is disabled.</param>
 [DataContract]
 public record SecuritySettings([property: DataMember(Order = 6)] bool Disabled) : ISettings
 {
