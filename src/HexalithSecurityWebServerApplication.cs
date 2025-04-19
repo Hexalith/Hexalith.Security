@@ -36,7 +36,7 @@ public class HexalithSecurityWebServerApplication : HexalithWebServerApplication
         : _version;
 
     /// <inheritdoc/>
-    public override Type WebAppApplicationType => typeof(global::Hexalith.Security.WebApp.HexalithSecurityWebAppApplication);
+    public override Type WebAppApplicationType => typeof(HexalithSecurityWebAppApplication);
 
     /// <inheritdoc/>
     public override IEnumerable<Type> WebServerModules => [
