@@ -18,6 +18,7 @@ public record SecuritySettings([property: DataMember(Order = 6)] bool Disabled) 
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SecuritySettings"/> class.
+    /// Needed for serialization.
     /// </summary>
     public SecuritySettings()
         : this(false)
