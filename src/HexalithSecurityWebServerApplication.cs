@@ -1,3 +1,8 @@
+// <copyright file="HexalithSecurityWebServerApplication.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Security.WebServer;
 
 using System;
@@ -31,7 +36,7 @@ public class HexalithSecurityWebServerApplication : HexalithWebServerApplication
         : _version;
 
     /// <inheritdoc/>
-    public override Type WebAppApplicationType => typeof(HexalithSecurityWebAppApplication);
+    public override Type WebAppApplicationType => typeof(global::Hexalith.Security.WebApp.HexalithSecurityWebAppApplication);
 
     /// <inheritdoc/>
     public override IEnumerable<Type> WebServerModules => [

@@ -2,6 +2,7 @@
 @rendermode InteractiveServer
 @inject IRoleService RoleService
 @using Hexalith.Security.Application
+@using Microsoft.FluentUI.AspNetCore.Components
 @inject NavigationManager NavigationManager
 @using Labels = Hexalith.Security.UI.Pages.Resources.Roles.Roles
 
@@ -26,6 +27,10 @@
         <FluentStack Orientation="Orientation.Vertical">
             <FluentLabel>@Labels.Name</FluentLabel>
             <FluentTextField @bind-Value="@_roleName" />
+            @if (_showValidationError)
+            {
+                <FluentMessageBar Intent="MessageIntent.Error">Role name is required</FluentMessageBar>
+            }
         </FluentStack>
         
         <FluentStack Orientation="Orientation.Horizontal" >
@@ -45,6 +50,7 @@
     private string _roleName = string.Empty;
     private bool _isLoading = true;
     private bool _isProcessing;
+    private bool _showValidationError;
 
     protected override async Task OnInitializedAsync()
     {
@@ -77,13 +83,14 @@
         if (_isProcessing) return;
         if (string.IsNullOrWhiteSpace(_roleName))
         {
-            // TODO: Show validation error
+            _showValidationError = true;
             return;
         }
 
         try
         {
             _isProcessing = true;
+            _showValidationError = false;
             await RoleService.UpdateAsync(_roleId, _roleName, CancellationToken.None);
             NavigateToList();
         }
