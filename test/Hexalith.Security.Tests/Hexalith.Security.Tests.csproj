@@ -16,11 +16,6 @@
     <ProjectReference Include="..\..\HexalithApp\src\HexalithApp.ApiServer\HexalithApp.ApiServer.csproj" />
     <ProjectReference Include="..\..\HexalithApp\src\HexalithApp.WebServer\HexalithApp.WebServer.csproj" />
   </ItemGroup>
-  <!--<ItemGroup>
-    <Compile Include="../../src/HexalithSecurityApiServerApplication.cs" />
-    <Compile Include="../../src/HexalithSecurityWebServerApplication.cs" />
-    <Compile Include="../../src/HexalithSecurityWebAppApplication.cs" />
-  </ItemGroup>-->
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
