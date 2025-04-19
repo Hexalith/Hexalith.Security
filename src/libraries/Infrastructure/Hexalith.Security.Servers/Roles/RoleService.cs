@@ -88,7 +88,9 @@ public class RoleService(
         ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
 
         CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false);
-        return role == null ? null : new RoleSummaryViewModel(role.Id, role.Name);
+        return role == null
+            ? null
+            : new RoleSummaryViewModel(role.Id, role.Name);
     }
 
     /// <summary>
