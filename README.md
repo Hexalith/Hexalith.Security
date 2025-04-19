@@ -1,6 +1,8 @@
 # Hexalith.Security
 
-This is a template repository for creating new Hexalith packages. The repository provides a structured starting point for developing new packages within the Hexalith ecosystem.
+## Overview
+
+Hexalith.Security is a comprehensive security framework for .NET applications providing authentication, authorization, and identity management capabilities. Built with modern C# and Blazor, it offers a robust approach to implementing security in web applications, API servers, and microservices.
 
 ## Build Status
 
@@ -24,16 +26,79 @@ This is a template repository for creating new Hexalith packages. The repository
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Security.svg)](https://www.nuget.org/packages/Hexalith.Security)
 [![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.Security?include_prereleases&label=preview)](https://github.com/Hexalith/Hexalith.Security/pkgs/nuget/Hexalith.Security)
 
-## Overview
+## Architecture
 
-This repository provides a template for creating new Hexalith packages. It includes all the necessary configuration files, directory structure, and GitHub workflow configurations to ensure consistency across Hexalith packages.
+The Hexalith.Security project follows a modular architecture with clear separation of concerns:
+
+### Core Components
+
+- **Abstractions**: Defines interfaces, models, and contracts for security features
+- **Application**: Business logic and services for security functionality
+- **Infrastructure**: Implementation of data access and external service integration
+- **Presentation**: UI components and pages for user interactions
+- **Modules**: Integration modules for different application types (WebApp, WebServer, ApiServer)
+
+### Integration with Hexalith Framework
+
+The security module integrates with:
+
+- **Hexalith.IdentityStores**: For identity storage and management
+- **Hexalith.Application**: For application module integration
+- **Hexalith.Infrastructure.DaprRuntime**: For distributed application runtime support
+
+## Modules
+
+### WebApp Module (`HexalithSecurityWebAppModule`)
+
+Client-side authentication and authorization for Blazor WebAssembly applications:
+
+```csharp
+// Program.cs
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+// ...
+HexalithSecurityWebAppModule.AddServices(builder.Services, builder.Configuration);
+```
+
+### WebServer Module (`HexalithSecurityWebServerModule`) 
+
+Server-side authentication and authorization:
+
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+// ...
+builder.Services.AddModule<HexalithSecurityWebServerModule>(builder.Configuration);
+
+var app = builder.Build();
+// ...
+app.UseModule<HexalithSecurityWebServerModule>();
+app.UseSecurity<HexalithSecurityWebServerModule>();
+```
+
+### ApiServer Module (`HexalithSecurityApiServerModule`)
+
+Security for API-focused applications:
+
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+// ...
+builder.Services.AddModule<HexalithSecurityApiServerModule>(builder.Configuration);
+```
+
+## Security Features
+
+- **Authentication**: ASP.NET Core Authentication, multiple schemes, Dapr-based authentication
+- **Authorization**: Policy-based, role-based access control
+- **Predefined Security Roles**: Owner, Contributor, Reader
+- **Predefined Security Policies**: For respective roles
 
 ## Repository Structure
 
 The repository is organized as follows:
 
 - [src](./src/README.md) Is the source code directory of your project.
-- [src/librairies](./src/librairies/README.md) Is the source code directory where you will add your Nuget package projects.
+- [src/libraries](./src/libraries/README.md) Is the source code directory where you will add your Nuget package projects.
 - [src/examples](./src/examples/README.md) Contains example implementations of your projects.
 - [src/servers](./src/servers/README.md) Is the source code directory where you will add your Docker container projects.
 - [src/aspire](./src/aspire/README.md) Is the source code directory where you will add your Aspire project.
@@ -45,42 +110,77 @@ The repository is organized as follows:
 ### Prerequisites
 
 - [Hexalith.Builds](https://github.com/Hexalith/Hexalith.Builds)
+- [Hexalith.IdentityStores](https://github.com/Hexalith/Hexalith.IdentityStores)
 - [.NET 8 SDK](https://dotnet.microsoft.com/download) or later
 - [PowerShell 7](https://github.com/PowerShell/PowerShell) or later
 - [Git](https://git-scm.com/)
 
-### Initializing the Package
+### Installation
 
-To use this template to create a new Hexalith package:
-
-1. Clone this repository or use it as a template when creating a new repository on GitHub.
-2. Run the initialization script with your desired package name:
+Add the Hexalith.Security NuGet package to your project:
 
 ```powershell
-./initialize.ps1 -PackageName "YourPackageName"
+dotnet add package Hexalith.Security
 ```
 
-This script will:
+### Configuration
 
-- Replace all occurrences of "Security" with your package name
-- Replace all occurrences of "Security" with the lowercase version of your package name
-- Rename directories and files that contain "Security" in their name
-- Initialize and update Git submodules
-- Set up the project structure for your new package
+Configure security settings in your `appsettings.json`:
 
-### Git Submodules
+```json
+{
+  "Security": {
+    "Disabled": false
+  }
+}
+```
 
-This template uses the Hexalith.Builds repository as a Git submodule. For information about the build system and configuration, refer to the README files in the Hexalith.Builds directory.
+## Examples
 
-## Development
+### Protecting a Blazor Page
 
-After initializing your package, you can start developing by:
+```razor
+@page "/secure-page"
+@attribute [Authorize]
+<h1>Secure Page</h1>
 
-1. Opening the solution file in your preferred IDE
-2. Adding your implementation to the src/ directory
-3. Writing tests in the test/ directory
-4. Building and testing your package
+<p>This page is only accessible to authenticated users.</p>
+```
+
+### Using Role-Based Authorization
+
+```razor
+@page "/admin-page"
+@attribute [Authorize(Roles = SecurityRoles.Owner)]
+<h1>Admin Page</h1>
+
+<p>This page is only accessible to users with the Owner role.</p>
+```
+
+### Using Policy-Based Authorization
+
+```razor
+@page "/contributor-page"
+@attribute [Authorize(Policy = SecurityPolicies.Contributors)]
+<h1>Contributors Page</h1>
+
+<p>This page is only accessible to users who can contribute.</p>
+```
+
+## Best Practices
+
+1. Use predefined roles and policies whenever possible
+2. Implement the principle of least privilege by assigning minimum required permissions
+3. Validate authorization at both UI and API levels
+4. Configure proper authentication mechanisms based on your application type
+5. Use cascading authentication state in Blazor applications for optimal performance
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support and Community
+
+For support, please open an issue on the [GitHub repository](https://github.com/Hexalith/Hexalith.Security).
+
+Join our Discord community: [Hexalith Discord](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
