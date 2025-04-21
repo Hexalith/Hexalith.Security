@@ -23,8 +23,8 @@ Hexalith.Security is a comprehensive security framework for .NET applications pr
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.Security&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.Security)
 
 [![Build status](https://github.com/Hexalith/Hexalith.Security/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Security/actions)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.Security.svg)](https://www.nuget.org/packages/Hexalith.Security)
-[![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.Security?include_prereleases&label=preview)](https://github.com/Hexalith/Hexalith.Security/pkgs/nuget/Hexalith.Security)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.Security.Application.svg)](https://www.nuget.org/packages/Hexalith.Security.Application)
+[![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.Security?include_prereleases&label=latest)](https://github.com/Hexalith/Hexalith.Security/pkgs/nuget/Hexalith.Security)
 
 ## Architecture
 
