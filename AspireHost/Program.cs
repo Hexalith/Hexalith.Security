@@ -11,15 +11,6 @@ HexalithDistributedApplication app = new(args);
 
 app.Builder.AddForwardedHeaders();
 
-if (app.Builder.ExecutionContext.IsRunMode)
-{
-    Console.WriteLine($"Starting environment {app.Builder.Environment.EnvironmentName}");
-    _ = app
-        .Builder
-        .AddExecutable("dapr-dashboard", "dapr", ".", "dashboard")
-        .WithHttpEndpoint(port: 8080, targetPort: 8080, name: "dashboard-http", isProxied: false);
-}
-
 app.Builder.Configuration.AddUserSecrets<Program>();
 
 if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
