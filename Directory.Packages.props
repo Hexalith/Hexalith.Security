@@ -15,12 +15,10 @@
     <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime.Sessions" Version="1.60.0" />
     <PackageVersion Include="Hexalith.Infrastructure.WebApis" Version="1.60.0" />
     <PackageVersion Include="Hexalith.Infrastructure.WebApp" Version="1.56.0" />
-    <PackageVersion Include="Hexalith.TestMocks" Version="1.51.0" />
     <PackageVersion Include="Hexalith.UI.ApiServer" Version="1.60.0" />
     <PackageVersion Include="Hexalith.UI.Components" Version="1.60.0" />
     <PackageVersion Include="Hexalith.UI.Components.Abstractions" Version="1.60.0" />
     <PackageVersion Include="Hexalith.UI.WebApp" Version="1.60.0" />
     <PackageVersion Include="Hexalith.UI.WebServer" Version="1.60.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
   </ItemGroup>
 </Project>
