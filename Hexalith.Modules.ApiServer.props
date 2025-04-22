@@ -1,4 +1,7 @@
 <Project>
+  <PropertyGroup>
+    <HexalithAppName>security</HexalithAppName>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="$(MSBuildThisFileDirectory)\src\libraries\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
     <ProjectReference Include="$(MSBuildThisFileDirectory)\src\libraries\Modules\Hexalith.Security.ApiServer\Hexalith.Security.ApiServer.csproj" />
