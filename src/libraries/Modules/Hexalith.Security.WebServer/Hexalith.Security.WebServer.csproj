@@ -7,11 +7,11 @@
     <ProjectReference Include="..\..\Infrastructure\Hexalith.Security.Servers\Hexalith.Security.Servers.csproj" />
     <ProjectReference Include="..\Hexalith.Security.WebApp\Hexalith.Security.WebApp.csproj" />
   </ItemGroup>
+  <ItemGroup Condition="'$(IDEBuild)' == 'true'">
+    <ProjectReference Include="..\..\..\..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores.UI\Hexalith.IdentityStores.UI.csproj" />
+  </ItemGroup>
   <ItemGroup Condition="'$(IDEBuild)' != 'true'">
     <PackageReference Include="Hexalith.IdentityStores.UI" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(IDEBuild)' == 'true'">
-    <ProjectReference Include="..\..\..\..\..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores.UI\Hexalith.IdentityStores.UI.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Hexalith.Infrastructure.ClientAppOnServer" />

@@ -6,7 +6,7 @@
     <PackageReference Include="Hexalith.IdentityStores" />
   </ItemGroup>
   <ItemGroup Condition="'$(IDEBuild)' == 'true'">
-    <ProjectReference Include="..\..\..\..\..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores\Hexalith.IdentityStores.csproj" />
+    <ProjectReference Include="..\..\..\..\Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores\Hexalith.IdentityStores.csproj" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Security.Application\Hexalith.Security.Application.csproj" />
