@@ -54,10 +54,10 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     public IEnumerable<Assembly> PresentationAssemblies =>
     [
         GetType().Assembly,
-        typeof(Hexalith.Security.WebApp.HexalithSecurityWebAppModule).Assembly,
-        typeof(Hexalith.IdentityStores.UI._Imports).Assembly,
-        typeof(Hexalith.Security.UI.Components._Imports).Assembly,
-        typeof(Hexalith.Security.UI.Pages._Imports).Assembly
+        typeof(WebApp.HexalithSecurityWebAppModule).Assembly,
+        typeof(IdentityStores.UI._Imports).Assembly,
+        typeof(UI.Components._Imports).Assembly,
+        typeof(UI.Pages._Imports).Assembly
     ];
 
     /// <inheritdoc/>
