@@ -6,15 +6,15 @@
     <PackageVersion Include="Hexalith.Application.Modules.Abstractions" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Application.Partitions.Abstractions" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Application.Sessions.Abstractions" Version="1.67.3" />
-    <PackageVersion Include="Hexalith.Infrastructure.AspireService.Hosting" Version="1.56.0" />
-    <PackageVersion Include="Hexalith.Infrastructure.ClientApp" Version="1.56.0" />
+    <PackageVersion Include="Hexalith.Infrastructure.AspireService.Hosting" Version="1.67.3" />
+    <PackageVersion Include="Hexalith.Infrastructure.ClientApp" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Infrastructure.ClientAppOnServer" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Infrastructure.ClientAppOnWasm" Version="1.67.3" />
-    <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime" Version="1.56.0" />
+    <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime.Partitions" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime.Sessions" Version="1.67.3" />
     <PackageVersion Include="Hexalith.Infrastructure.WebApis" Version="1.67.3" />
-    <PackageVersion Include="Hexalith.Infrastructure.WebApp" Version="1.56.0" />
+    <PackageVersion Include="Hexalith.Infrastructure.WebApp" Version="1.67.3" />
     <PackageVersion Include="Hexalith.UI.ApiServer" Version="1.67.3" />
     <PackageVersion Include="Hexalith.UI.Components" Version="1.67.3" />
     <PackageVersion Include="Hexalith.UI.Components.Abstractions" Version="1.67.3" />
