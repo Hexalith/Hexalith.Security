@@ -1,0 +1,32 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "Hexalith": {
+    "IdentityStores": {
+      "Google": {
+        "Enabled": true,
+        "Id": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+        "Secret": "YOUR_GOOGLE_CLIENT_SECRET",
+        "CallbackPath": "/signin-google"
+      },
+      "MicrosoftOidc": {
+        "Enabled": false,
+        "Id": "YOUR_CLIENT_ID",
+        "Tenant": "YOUR_TENANT_ID",
+        "CertificateThumbprint": "YOUR_CERTIFICATE_THUMBPRINT",
+        "CallbackPath": "/signin-oidc",
+        "AllowInvalidCertificates": true
+      },
+      "Github": {
+        "Enabled": false,
+        "Id": "YOUR_GITHUB_CLIENT_ID",
+        "Secret": "YOUR_GITHUB_CLIENT_SECRET",
+        "CallbackPath": "/signin-github"
+      }
+    }
+  }
+} 
