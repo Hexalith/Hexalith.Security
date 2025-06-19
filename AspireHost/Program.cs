@@ -18,6 +18,7 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
     _ = app
         .AddProject<Projects.HexalithApp_WebServer>("securityweb")
         .WithEnvironmentFromConfiguration("APP_API_TOKEN")
+        .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__DataProtectionPath", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__MicrosoftOidc__Id", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__MicrosoftOidc__Secret", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__MicrosoftOidc__Tenant", false)
