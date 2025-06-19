@@ -20,7 +20,6 @@
     <PackageVersion Include="Hexalith.UI.Components.Abstractions" Version="1.67.3" />
     <PackageVersion Include="Hexalith.UI.WebApp" Version="1.67.3" />
     <PackageVersion Include="Hexalith.UI.WebServer" Version="1.67.3" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.DataProtection" Version="9.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="9.0.6" />
   </ItemGroup>

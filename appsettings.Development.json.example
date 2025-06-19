@@ -26,6 +26,12 @@
         "Id": "YOUR_GITHUB_CLIENT_ID",
         "Secret": "YOUR_GITHUB_CLIENT_SECRET",
         "CallbackPath": "/signin-github"
+      },
+      "Apple": {
+        "Enabled": false,
+        "Id": "YOUR_APPLE_CLIENT_ID",
+        "Secret": "YOUR_APPLE_CLIENT_SECRET",
+        "CallbackPath": "/signin-apple"
       }
     }
   }

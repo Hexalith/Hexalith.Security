@@ -202,6 +202,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Security.Application.Abstractions", "src\libraries\Application\Hexalith.Security.Application.Abstractions\Hexalith.Security.Application.Abstractions.csproj", "{7A777E88-B3B6-9B8E-91A8-DDFA43FBA7CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexalith.IdentityStores", "Hexalith.IdentityStores", "{0351A7AE-BA33-4EEB-A1A7-5A3215D86441}"
+	ProjectSection(SolutionItems) = preProject
+		Hexalith.IdentityStores\Directory.Build.props = Hexalith.IdentityStores\Directory.Build.props
+		Hexalith.IdentityStores\Directory.Packages.props = Hexalith.IdentityStores\Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.IdentityStores.Abstractions", "Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores.Abstractions\Hexalith.IdentityStores.Abstractions.csproj", "{69845221-B87C-E59A-5177-EA34A5963BB5}"
 EndProject
