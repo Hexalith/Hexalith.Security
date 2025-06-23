@@ -2,9 +2,9 @@
   <PropertyGroup>
     <!-- Define a property to store the path of the parent Directory.Build.props. -->
     <ParentDirectoryBuildProps>$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))</ParentDirectoryBuildProps>
-    <Hexalith1BuildBuildProps>$(MSBuildThisFileDirectory)../../Hexalith.Builds/Hexalith.Build.props</Hexalith1BuildBuildProps>
-    <Hexalith2BuildBuildProps>$(MSBuildThisFileDirectory)../../../Hexalith.Builds/Hexalith.Build.props</Hexalith2BuildBuildProps>
-    <Hexalith3BuildBuildProps>$(MSBuildThisFileDirectory)../../../../Hexalith.Builds/Hexalith.Build.props</Hexalith3BuildBuildProps>
+    <Hexalith1BuildBuildProps>$(MSBuildThisFileDirectory)Hexalith.Builds/Hexalith.Build.props</Hexalith1BuildBuildProps>
+    <Hexalith2BuildBuildProps>$(MSBuildThisFileDirectory)../Hexalith.Builds/Hexalith.Build.props</Hexalith2BuildBuildProps>
+    <Hexalith3BuildBuildProps>$(MSBuildThisFileDirectory)../../Hexalith.Builds/Hexalith.Build.props</Hexalith3BuildBuildProps>
   </PropertyGroup>
 
   <!-- Import the parent Directory.Build.props file if it exists -->
