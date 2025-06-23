@@ -11,7 +11,6 @@
   <Import Project="$(ParentDirectoryBuildProps)" Condition="Exists('$(ParentDirectoryBuildProps)')" />
 
   <!-- Import the Hexalith.Package.props file in Hexalith.Builds. This file must exist. -->
-  <Import Project="$(MSBuildThisFileDirectory)../../Hexalith.Builds/Hexalith.Package.props" />
   <Import Project="$(Hexalith1PackageBuildProps)" Condition="Exists('$(Hexalith1PackageBuildProps)')" />
   <Import Project="$(Hexalith2PackageBuildProps)" Condition="Exists('$(Hexalith2PackageBuildProps)') And !Exists('$(Hexalith1PackageBuildProps)')" />
   <Import Project="$(Hexalith3PackageBuildProps)" Condition="Exists('$(Hexalith3PackageBuildProps)') And !Exists('$(Hexalith1PackageBuildProps)') And !Exists('$(Hexalith2PackageBuildProps)')" />

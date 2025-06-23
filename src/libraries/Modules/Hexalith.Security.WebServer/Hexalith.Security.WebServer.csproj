@@ -15,7 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Hexalith.Infrastructure.ClientAppOnServer" />
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" />
   </ItemGroup>
 
 </Project>
