@@ -38,8 +38,8 @@ jobs:
   publish-containers:
     runs-on: ubuntu-latest
     name: Publish Containers
-    needs: build
-    if: ${{ needs.build.outputs.version != '' }}
+    needs: build-and-test
+    if: ${{ needs.build-and-test.outputs.version != '' }}
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -50,7 +50,7 @@ jobs:
       uses: Hexalith/Hexalith.Builds/Github/publish-container-to-registry@main
       with:
         app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
-        version: ${{ needs.build.outputs.version }}
+        version: ${{ needs.build-and-test.outputs.version }}
         registry: ${{ vars.AZURE_REGISTRY }}
         username: ${{ secrets.AZURE_APPLICATIONID }}
         password: ${{ secrets.AZURE_APPLICATIONSECRET }}
@@ -58,14 +58,14 @@ jobs:
   deploy-azure:
     runs-on: ubuntu-latest
     name: Deploy to Azure Container Apps
-    needs: [build, publish-containers]
-    if: ${{ needs.build.outputs.version != '' }}
+    needs: [build-and-test, publish-containers]
+    if: ${{ needs.build-and-test.outputs.version != '' }}
     environment: Staging
     steps:
     - name: Deploy to Azure Container Apps
       uses: Hexalith/Hexalith.Builds/Github/publish-azure-container-app@main
       with:
-        version: ${{ needs.build.outputs.version }}
+        version: ${{ needs.build-and-test.outputs.version }}
         client-id: ${{ secrets.AZURE_APPLICATIONID }}
         tenant-id: ${{ secrets.AZURE_APPLICATIONSECRET }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
