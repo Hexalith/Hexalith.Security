@@ -213,6 +213,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.IdentityStores", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.IdentityStores.UI", "Hexalith.IdentityStores\src\libraries\Hexalith.IdentityStores.UI\Hexalith.IdentityStores.UI.csproj", "{DB60FBD3-EA56-79E3-93BC-4C97471FED7A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publish-container-to-registry", "publish-container-to-registry", "{471F103B-C814-751B-0F3D-7E94FCA7C1F9}"
+	ProjectSection(SolutionItems) = preProject
+		Hexalith.Builds\Github\publish-container-to-registry\action.yml = Hexalith.Builds\Github\publish-container-to-registry\action.yml
+		Hexalith.Builds\Github\publish-container-to-registry\README.md = Hexalith.Builds\Github\publish-container-to-registry\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publish-azure-container-app", "publish-azure-container-app", "{D6994988-F228-3933-BFA1-FF4CD3603D31}"
+	ProjectSection(SolutionItems) = preProject
+		Hexalith.Builds\Github\publish-azure-container-app\action.yml = Hexalith.Builds\Github\publish-azure-container-app\action.yml
+		Hexalith.Builds\Github\publish-azure-container-app\README.md = Hexalith.Builds\Github\publish-azure-container-app\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -334,6 +346,8 @@ Global
 		{69845221-B87C-E59A-5177-EA34A5963BB5} = {0351A7AE-BA33-4EEB-A1A7-5A3215D86441}
 		{2EC3A73C-9BD2-A7A0-F2D8-09474866C14D} = {0351A7AE-BA33-4EEB-A1A7-5A3215D86441}
 		{DB60FBD3-EA56-79E3-93BC-4C97471FED7A} = {0351A7AE-BA33-4EEB-A1A7-5A3215D86441}
+		{471F103B-C814-751B-0F3D-7E94FCA7C1F9} = {538F6CF8-F1A1-4584-BE2E-AF2418F61641}
+		{D6994988-F228-3933-BFA1-FF4CD3603D31} = {538F6CF8-F1A1-4584-BE2E-AF2418F61641}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}
