@@ -68,9 +68,9 @@ jobs:
       with:
         version: ${{ needs.build-and-test.outputs.version }}
         client-id: ${{ secrets.AZURE_APPLICATIONID }}
-        tenant-id: ${{ secrets.AZURE_APPLICATIONSECRET }}
+        tenant-id: ${{ secrets.AZURE_TENANTID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resource-group: ${{ vars.HEXALITH_RESOURCE_GROUP }}
         app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
-        registry: ${{ secrets.AZURE_REGISTRY }}
+        registry: ${{ vars.AZURE_REGISTRY }}
     
