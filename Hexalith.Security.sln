@@ -178,6 +178,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireHost", "AspireHost\AspireHost.csproj", "{17C47AFF-EC8E-4572-A959-FE33AFAE16F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HexalithApp", "HexalithApp", "{823838AC-6041-430A-9BBA-E54D3F4CF43B}"
+	ProjectSection(SolutionItems) = preProject
+		HexalithApp\Directory.Build.props = HexalithApp\Directory.Build.props
+		HexalithApp\Directory.Packages.props = HexalithApp\Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{DEEB2DC7-6E66-4189-9738-3B731EEA6CFF}"
 EndProject
