@@ -68,7 +68,7 @@ jobs:
       with:
         version: ${{ needs.build-and-test.outputs.version }}
         client-id: ${{ secrets.AZURE_APPLICATIONID }}
-        tenant-id: ${{ secrets.AZURE_TENANTID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resource-group: ${{ vars.HEXALITH_RESOURCE_GROUP }}
         app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
