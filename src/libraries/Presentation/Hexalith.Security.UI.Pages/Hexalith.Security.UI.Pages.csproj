@@ -27,6 +27,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\Users\UserDetails.Designer.cs">
+      <DependentUpon>UserDetails.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +45,10 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Users\UserIndex.resx">
       <LastGenOutput>UserIndex.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Users\UserDetails.resx">
+      <LastGenOutput>UserDetails.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>

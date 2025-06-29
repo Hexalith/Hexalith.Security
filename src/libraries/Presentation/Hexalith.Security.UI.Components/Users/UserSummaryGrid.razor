@@ -1,86 +1,93 @@
 ﻿@inject IUserService UserService
 @inject NavigationManager NavigationManager
+@using Hexalith.UI.Components.FluentUITheme
 @using Labels = Hexalith.Security.UI.Components.Resources.Users.Users
-<FluentDataGrid TGridItem="UserSummaryViewModel" Items="@_users?.AsQueryable()" ResizableColumns="true">
-    <PropertyColumn Property="@(p => p.Id)" Title="@Labels.Id" />
-    <PropertyColumn Property="@(p => p.Name)" Title="@Labels.Name" />
-    <PropertyColumn Property="@(p => p.Email)" Title="@Labels.Email" />
-    <TemplateColumn Title="Administrator" Align="@Align.Center">
-        <FluentCheckbox Disabled="AdministratorColumnDisabled(context)" Value="@(context.GlobalAdministrator)" ValueChanged="@(() => OnGlobalAdministrator(context))" />
-    </TemplateColumn>
-    <TemplateColumn Title="Disabled" Align="@Align.Center">
-        <FluentCheckbox Disabled="DisabledColumnDisabled(context)" Value="@context.Disabled" ValueChanged="@(() => OnDisabled(context))" aria-label="Enabled" />
-    </TemplateColumn>
-    <TemplateColumn Title="Actions" Align="@Align.End">
-        <FluentButton aria-label="Edit" IconEnd="@(new Icons.Regular.Size16.Edit())" OnClick="@(() => OnEdit(context))" />
-        <FluentButton aria-label="Delete" Disabled="@(context.GlobalAdministrator)" IconEnd="@(new Icons.Regular.Size16.Delete())" Onclick="@(() => OnDelete(context))" />
-    </TemplateColumn>
-</FluentDataGrid>
+
 @if (_users is null)
 {
-    <FluentProgressRing />
+	<FluentProgressRing />
+}
+else
+{
+	<FluentDataGrid 
+		TGridItem="UserSummaryViewModel" 
+		Items="@_users?.AsQueryable()" ResizableColumns="true"
+		OnRowDoubleClick="DoubleClick"	>
+		<PropertyColumn Property="@(p => p.Id)" Title="@Labels.Id" />
+		<PropertyColumn Property="@(p => p.Name)" Title="@Labels.Name" />
+		<PropertyColumn Property="@(p => p.Email)" Title="@Labels.Email" />
+		<TemplateColumn Title="Administrator" Align="@Align.Center">
+			<FluentCheckbox Disabled="AdministratorColumnDisabled(context)" Value="@(context.GlobalAdministrator)" ValueChanged="@(() => OnGlobalAdministrator(context))" />
+		</TemplateColumn>
+		<TemplateColumn Title="Disabled" Align="@Align.Center">
+			<FluentCheckbox Disabled="DisabledColumnDisabled(context)" Value="@context.Disabled" ValueChanged="@(() => OnDisabled(context))" aria-label="Enabled" />
+		</TemplateColumn>
+		<TemplateColumn Title="Actions" Align="@Align.End">
+			<FluentButton aria-label="Delete" Disabled="@(context.GlobalAdministrator)" IconEnd="@(new Icons.Regular.Size16.Delete())" Onclick="@(() => OnDelete(context))" />
+		</TemplateColumn>
+	</FluentDataGrid>
 }
 
-
 @code {
-    private IEnumerable<UserSummaryViewModel>? _users;
+	private IEnumerable<UserSummaryViewModel>? _users;
 
-    protected override async Task OnInitializedAsync()
-    {
-        _users = await UserService.GetAllAsync(CancellationToken.None);
-        await base.OnInitializedAsync();
-    }
-    private bool AdministratorColumnDisabled(UserSummaryViewModel context)
-    {
-        return !CanRemoveGlobalAdministrator() && context.GlobalAdministrator;
-    }
-    private static bool DisabledColumnDisabled(UserSummaryViewModel context)
-    {
-        return context.GlobalAdministrator && !context.Disabled;
-    }
-    private async Task OnDelete(UserSummaryViewModel context)
-    {
-        await UserService.DeleteAsync(context.Id, CancellationToken.None);
-    }
-    private void OnEdit(UserSummaryViewModel context)
-    {
-        NavigationManager.NavigateTo($"/Security/User/{context.Id}/Edit");
-    }
-    private async Task OnGlobalAdministrator(UserSummaryViewModel context)
-    {
-        if (context.GlobalAdministrator)
-        {
-            if (CanRemoveGlobalAdministrator())
-            {
-                await UserService.RemoveGlobalAdministratorAsync(context.Id, CancellationToken.None);
-            }
-        }
-        else
-            await UserService.AddGlobalAdministratorAsync(context.Id, CancellationToken.None);
-        _users = _users!
-            .Where(p => p.Id != context.Id)
-            .Union([await UserService.GetSummaryAsync(context.Id, CancellationToken.None)])
-            .OrderBy(p => p.Name);
-        StateHasChanged();
-    }
-    private async Task OnDisabled(UserSummaryViewModel context)
-    {
-        if (context.Disabled)
-            await UserService.EnableAsync(context.Id, CancellationToken.None);
-        else
-        {
-            await UserService.DisableAsync(context.Id, CancellationToken.None);
-            if (context.GlobalAdministrator && CanRemoveGlobalAdministrator())
-                await UserService.RemoveGlobalAdministratorAsync(context.Id, CancellationToken.None);
-        }
-        _users = _users!
-            .Where(p => p.Id != context.Id)
-            .Union([await UserService.GetSummaryAsync(context.Id, CancellationToken.None)])
-            .OrderBy(p => p.Name);
-        StateHasChanged();
-    }
-    private bool CanRemoveGlobalAdministrator()
-    {
-        return _users?.Count(p => p.GlobalAdministrator && !p.Disabled) > 1;
-    }
+	protected override async Task OnInitializedAsync()
+	{
+		_users = await UserService.GetAllAsync(CancellationToken.None);
+		await base.OnInitializedAsync();
+	}
+	private bool AdministratorColumnDisabled(UserSummaryViewModel context)
+	{
+		return !CanRemoveGlobalAdministrator() && context.GlobalAdministrator;
+	}
+	private static bool DisabledColumnDisabled(UserSummaryViewModel context)
+	{
+		return context.GlobalAdministrator && !context.Disabled;
+	}
+	private async Task OnDelete(UserSummaryViewModel context)
+	{
+		await UserService.DeleteAsync(context.Id, CancellationToken.None);
+	}
+	private void DoubleClick(FluentDataGridRow<UserSummaryViewModel> row)
+	{
+		NavigationManager.NavigateTo($"/Security/User/{row.Item?.Id}");
+	}
+
+	private async Task OnGlobalAdministrator(UserSummaryViewModel context)
+	{
+		if (context.GlobalAdministrator)
+		{
+			if (CanRemoveGlobalAdministrator())
+			{
+				await UserService.RemoveGlobalAdministratorAsync(context.Id, CancellationToken.None);
+			}
+		}
+		else
+			await UserService.AddGlobalAdministratorAsync(context.Id, CancellationToken.None);
+		_users = _users!
+			.Where(p => p.Id != context.Id)
+			.Union([await UserService.GetSummaryAsync(context.Id, CancellationToken.None)])
+			.OrderBy(p => p.Name);
+		StateHasChanged();
+	}
+	private async Task OnDisabled(UserSummaryViewModel context)
+	{
+		if (context.Disabled)
+			await UserService.EnableAsync(context.Id, CancellationToken.None);
+		else
+		{
+			await UserService.DisableAsync(context.Id, CancellationToken.None);
+			if (context.GlobalAdministrator && CanRemoveGlobalAdministrator())
+				await UserService.RemoveGlobalAdministratorAsync(context.Id, CancellationToken.None);
+		}
+		_users = _users!
+			.Where(p => p.Id != context.Id)
+			.Union([await UserService.GetSummaryAsync(context.Id, CancellationToken.None)])
+			.OrderBy(p => p.Name);
+		StateHasChanged();
+	}
+	private bool CanRemoveGlobalAdministrator()
+	{
+		return _users?.Count(p => p.GlobalAdministrator && !p.Disabled) > 1;
+	}
 }

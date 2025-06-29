@@ -1,0 +1,56 @@
+@page "/Security/User/{UserId}"
+@rendermode InteractiveServer
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+@using Hexalith.Security.Application.Users
+@using Labels = Hexalith.Security.UI.Pages.Resources.Users.UserDetails
+
+<FluentStack Orientation="Orientation.Vertical">
+    <FluentLabel Typo="Typography.PageTitle">@Labels.DetailsTitle</FluentLabel>
+
+    @if (_user is null)
+    {
+        <FluentProgressRing />
+    }
+    else
+    {
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel>@Labels.Id</FluentLabel>
+            <FluentTextField @bind-Value="@_user.Id" Disabled="true" />
+        </FluentStack>
+
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel>@Labels.Username</FluentLabel>
+            <FluentTextField @bind-Value="@_user.Name" Disabled="true" />
+        </FluentStack>
+
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel>@Labels.Email</FluentLabel>
+            <FluentTextField @bind-Value="@_user.Email" />
+        </FluentStack>
+
+    }
+</FluentStack>
+
+@code {
+    [Parameter]
+    public string UserId { get; set; } = string.Empty;
+
+    private UserDetailsViewModel? _user;
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(UserId))
+        {
+            NavigationManager.NavigateTo("/Security/User");
+        }
+        else
+        {
+            _user = await UserService.GetAsync(UserId, CancellationToken.None);
+        }
+    }
+
+    private void NavigateToList()
+    {
+        NavigationManager.NavigateTo("/Security/User");
+    }
+}

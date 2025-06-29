@@ -11,22 +11,22 @@ namespace Hexalith.Security.Application.Users;
 public class UserEditViewModel
 {
     /// <summary>
+    /// Gets or sets a value indicating whether the user is disabled.
+    /// </summary>
+    public bool Disabled { get; set; }
+
+    /// <summary>
     /// Gets or sets the user's email address.
     /// </summary>
     public string? Email { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the user is active.
+    /// Gets or sets the user's unique identifier.
     /// </summary>
-    public bool IsActive { get; set; }
+    public string Id { get; set; } = string.Empty;
 
     /// <summary>
     /// Gets or sets the user's name.
     /// </summary>
     public string? Name { get; set; }
-
-    /// <summary>
-    /// Gets or sets the user's unique identifier.
-    /// </summary>
-    public Guid UserId { get; set; }
 }

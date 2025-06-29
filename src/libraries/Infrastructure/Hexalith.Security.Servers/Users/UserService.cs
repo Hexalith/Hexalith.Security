@@ -90,7 +90,24 @@ public class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public Task<UserDetailsViewModel?> FindAsync(string userId, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public async Task<UserDetailsViewModel?> FindAsync(string userId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+
+        CustomUser? user = await _userStore.FindByIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        if (user == null)
+        {
+            return null;
+        }
+
+        return new UserDetailsViewModel
+        {
+            Id = user.Id,
+            Name = user.UserName ?? string.Empty,
+            Email = user.Email,
+            Disabled = user.Disabled,
+        };
+    }
 
     /// <inheritdoc/>
     public async Task<UserSummaryViewModel?> FindSummaryAsync(string userId, CancellationToken cancellationToken)
@@ -157,5 +174,17 @@ public class UserService : IUserService
             cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public Task UpdateAsync(UserEditViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task UpdateAsync(UserEditViewModel user, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(user);
+        ArgumentException.ThrowIfNullOrWhiteSpace(user.Id);
+        CustomUser customUser = new()
+        {
+            Id = user.Id,
+            UserName = user.Name,
+            Email = user.Email,
+            Disabled = user.Disabled,
+        };
+        return _userStore.UpdateAsync(customUser, cancellationToken);
+    }
 }
