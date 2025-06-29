@@ -48,6 +48,7 @@ if (app.IsProjectEnabled<Projects.HexalithApp_ApiServer>())
 {
     _ = app
         .AddProject<Projects.HexalithApp_ApiServer>("securityapi")
+        .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__DataProtectionPath", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Id", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Secret", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__TenantId", false)
