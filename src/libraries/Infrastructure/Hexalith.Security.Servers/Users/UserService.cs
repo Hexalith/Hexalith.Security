@@ -100,12 +100,14 @@ public class UserService : IUserService
             return null;
         }
 
+        IList<Claim> claims = await _claimStore.GetClaimsAsync(user, cancellationToken).ConfigureAwait(false);
         return new UserDetailsViewModel
         {
             Id = user.Id,
             Name = user.UserName ?? string.Empty,
             Email = user.Email,
             Disabled = user.Disabled,
+            Roles = claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList(),
         };
     }
 
@@ -186,5 +188,44 @@ public class UserService : IUserService
             Disabled = user.Disabled,
         };
         return _userStore.UpdateAsync(customUser, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task AddRoleAsync(string userId, string roleId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+
+        await _claimStore.AddClaimsAsync(
+            new CustomUser { Id = userId },
+            [new Claim(ClaimTypes.Role, roleId)],
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task RemoveRoleAsync(string userId, string roleId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+
+        await _claimStore.RemoveClaimsAsync(
+            new CustomUser { Id = userId },
+            [new Claim(ClaimTypes.Role, roleId)],
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<IEnumerable<string>> GetUserRolesAsync(string userId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+
+        CustomUser? user = await _userStore.FindByIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        if (user == null)
+        {
+            return [];
+        }
+
+        IList<Claim> claims = await _claimStore.GetClaimsAsync(user, cancellationToken).ConfigureAwait(false);
+        return claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
     }
 }

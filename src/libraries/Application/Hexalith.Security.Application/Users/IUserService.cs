@@ -116,4 +116,30 @@ public interface IUserService
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
     Task UpdateAsync(UserEditViewModel user, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Adds a role to a user asynchronously.
+    /// </summary>
+    /// <param name="userId">The ID of the user to add the role to.</param>
+    /// <param name="roleId">The ID of the role to add.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task AddRoleAsync(string userId, string roleId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Removes a role from a user asynchronously.
+    /// </summary>
+    /// <param name="userId">The ID of the user to remove the role from.</param>
+    /// <param name="roleId">The ID of the role to remove.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task RemoveRoleAsync(string userId, string roleId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets all roles for a user asynchronously.
+    /// </summary>
+    /// <param name="userId">The ID of the user to get roles for.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains a collection of role IDs.</returns>
+    Task<IEnumerable<string>> GetUserRolesAsync(string userId, CancellationToken cancellationToken);
 }

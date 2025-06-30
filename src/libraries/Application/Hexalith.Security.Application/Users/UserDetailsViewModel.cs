@@ -30,6 +30,11 @@ public class UserDetailsViewModel : IIdDescription
     /// </summary>
     public string Name { get; set; } = string.Empty;
 
+    /// <summary>
+    /// Gets or sets the collection of role IDs assigned to the user.
+    /// </summary>
+    public List<string> Roles { get; set; } = [];
+
     /// <inheritdoc/>
     string IIdDescription.Description => Name;
 }

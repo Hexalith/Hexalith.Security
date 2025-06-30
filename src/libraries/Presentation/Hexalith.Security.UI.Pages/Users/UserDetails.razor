@@ -1,8 +1,10 @@
 @page "/Security/User/{UserId}"
 @rendermode InteractiveServer
 @inject IUserService UserService
+@inject IRoleService RoleService
 @inject NavigationManager NavigationManager
 @using Hexalith.Security.Application.Users
+@using Hexalith.Security.Application
 @using Labels = Hexalith.Security.UI.Pages.Resources.Users.UserDetails
 
 <FluentStack Orientation="Orientation.Vertical">
@@ -14,21 +16,44 @@
     }
     else
     {
-        <FluentStack Orientation="Orientation.Vertical">
-            <FluentLabel>@Labels.Id</FluentLabel>
-            <FluentTextField @bind-Value="@_user.Id" Disabled="true" />
-        </FluentStack>
+        <FluentGrid Style="width:100%">
+            <FluentGridItem md="4">
+                <FluentLabel>@Labels.Id</FluentLabel>
+                <FluentTextField @bind-Value="@_user.Id" Disabled="true" />
+            </FluentGridItem>
 
-        <FluentStack Orientation="Orientation.Vertical">
-            <FluentLabel>@Labels.Username</FluentLabel>
-            <FluentTextField @bind-Value="@_user.Name" Disabled="true" />
-        </FluentStack>
+            <FluentGridItem md="4">
+                <FluentLabel>@Labels.Username</FluentLabel>
+                <FluentTextField @bind-Value="@_user.Name" Disabled="true" />
+            </FluentGridItem>
 
-        <FluentStack Orientation="Orientation.Vertical">
-            <FluentLabel>@Labels.Email</FluentLabel>
-            <FluentTextField @bind-Value="@_user.Email" />
-        </FluentStack>
+            <FluentGridItem md="4">
+                <FluentLabel>@Labels.Email</FluentLabel>
+                <FluentTextField @bind-Value="@_user.Email" Disabled="true" />
+            </FluentGridItem>
 
+            <FluentGridItem md="4">
+                <FluentLabel>Roles</FluentLabel>
+                @if (_allRoles is null)
+                {
+                    <FluentProgressRing />
+                }
+                else
+                {
+                    <FluentSelect Multiple="true"
+                                  @bind-SelectedOptions="@_selectedRoles"
+                                  @bind-SelectedOptions:after="OnRoleSelectionChanged"
+                                  TOption="string"
+                                  Height="200px"
+                                  Style="width: 100%;">
+                        @foreach (var role in _allRoles)
+                        {
+                            <FluentOption Value="@role.Id">@role.Name</FluentOption>
+                        }
+                    </FluentSelect>
+                }
+            </FluentGridItem>
+        </FluentGrid>
     }
 </FluentStack>
 
@@ -37,6 +62,10 @@
     public string UserId { get; set; } = string.Empty;
 
     private UserDetailsViewModel? _user;
+    private IEnumerable<RoleSummaryViewModel>? _allRoles;
+    private IEnumerable<string> _selectedRoles = [];
+    private HashSet<string> _originalRoles = [];
+
     protected override async Task OnInitializedAsync()
     {
         if (string.IsNullOrEmpty(UserId))
@@ -45,8 +74,51 @@
         }
         else
         {
-            _user = await UserService.GetAsync(UserId, CancellationToken.None);
+            // Load user details and all available roles in parallel
+            var userTask = UserService.GetAsync(UserId, CancellationToken.None);
+            var rolesTask = RoleService.GetAllAsync(CancellationToken.None);
+            
+            await Task.WhenAll(userTask, rolesTask);
+            
+            _user = await userTask;
+            _allRoles = await rolesTask;
+            
+            if (_user != null)
+            {
+                _selectedRoles = _user.Roles;
+                _originalRoles = _user.Roles.ToHashSet();
+            }
         }
+    }
+
+    private async Task OnRoleSelectionChanged()
+    {
+        if (_user == null || _selectedRoles == null)
+            return;
+
+        var currentRoles = _selectedRoles.ToHashSet();
+        
+        // Find roles to add (in current selection but not in original)
+        var rolesToAdd = currentRoles.Except(_originalRoles);
+        
+        // Find roles to remove (in original but not in current selection)
+        var rolesToRemove = _originalRoles.Except(currentRoles);
+
+        // Process role additions
+        foreach (var roleId in rolesToAdd)
+        {
+            await UserService.AddRoleAsync(UserId, roleId, CancellationToken.None);
+        }
+
+        // Process role removals
+        foreach (var roleId in rolesToRemove)
+        {
+            await UserService.RemoveRoleAsync(UserId, roleId, CancellationToken.None);
+        }
+
+        // Update the original roles to reflect the new state
+        _originalRoles = currentRoles;
+        _user.Roles = currentRoles.ToList();
     }
 
     private void NavigateToList()
