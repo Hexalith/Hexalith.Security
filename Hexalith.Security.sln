@@ -63,7 +63,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servers", "servers", "{3390
 		src\servers\README.md = src\servers\README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexalith.Build", "Hexalith.Build", "{DA4446BE-296C-40E4-B0FF-05F9AF0F2502}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexalith.Builds", "Hexalith.Builds", "{DA4446BE-296C-40E4-B0FF-05F9AF0F2502}"
 	ProjectSection(SolutionItems) = preProject
 		Hexalith.Builds\.clinerules = Hexalith.Builds\.clinerules
 		Hexalith.Builds\.cursorrules = Hexalith.Builds\.cursorrules
