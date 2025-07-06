@@ -11,12 +11,15 @@
   <Import Project="$(ParentDirectoryBuildProps)" Condition="Exists('$(ParentDirectoryBuildProps)')" />
 
   <!-- Import the Hexalith.Build.props file in Hexalith.Builds. This file must exist. -->
-  <Import Project="$(Hexalith1BuildBuildProps)" Condition="Exists('$(Hexalith1BuildBuildProps)') And '$(HexalithBuildsRoot)' == ''" />
-  <Import Project="$(Hexalith2BuildBuildProps)" Condition="Exists('$(Hexalith2BuildBuildProps)') And '$(HexalithBuildsRoot)' == ''" />
-  <Import Project="$(Hexalith3BuildBuildProps)" Condition="Exists('$(Hexalith3BuildBuildProps)') And '$(HexalithBuildsRoot)' == ''" />
+  <Import Project="$(Hexalith1BuildBuildProps)" Condition="Exists('$(Hexalith1BuildBuildProps)') And !Exists('$(ParentDirectoryBuildProps)')" />
+  <Import Project="$(Hexalith2BuildBuildProps)" Condition="Exists('$(Hexalith2BuildBuildProps)') And !Exists('$(ParentDirectoryBuildProps)')" />
+  <Import Project="$(Hexalith3BuildBuildProps)" Condition="Exists('$(Hexalith3BuildBuildProps)')" />
 
   <PropertyGroup>
     <Product>Hexalith.Security</Product>
     <RepositoryUrl>https://github.com/Hexalith/Hexalith.Security</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Hexalith/Hexalith.Security</PackageProjectUrl>
+    <PackageTags>hexalith;security</PackageTags>
+    <Description>Security module for Hexalith projects</Description>
   </PropertyGroup>
 </Project>
