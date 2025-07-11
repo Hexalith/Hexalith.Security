@@ -52,10 +52,12 @@
 		{
 			NavigationManager.NavigateTo("/Security/User");
 		}
-		else
+		// Load user details and all available roles in parallel
+		_user = await UserService.GetAsync(UserId, CancellationToken.None);
+		if (_user is null)
 		{
-			// Load user details and all available roles in parallel
-			var _user = await UserService.GetAsync(UserId, CancellationToken.None);
+			throw new KeyNotFoundException($"User with ID '{UserId}' not found.");
 		}
+		await base.OnInitializedAsync();
 	}
 }

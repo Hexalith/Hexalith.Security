@@ -1,7 +1,10 @@
 ﻿@inject IRoleService RoleService
 @inject IUserService UserService
 @using Hexalith.Security.Application
-@using Labels = Hexalith.Security.UI.Components.Resources.Roles.Roles
+@using Labels = Hexalith.Security.UI.Components.Resources.UserRoles.UserRoles
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Labels> L
+
 
 @if (_roles is null)
 {
@@ -11,12 +14,15 @@ else
 {
 	<FluentDataGrid TGridItem="RoleSummaryViewModel" Items="@_userRoles" ResizableColumns="true"
 					OnRowClick="HandleRowClick" Selectable SelectionMode="SelectionMode.Single">
-		<PropertyColumn Property="@(p => p.Id)" Title="@Labels.Id" />
-		<PropertyColumn Property="@(p => p.Name)" Title="@Labels.Name" />
-		<TemplateColumn Title="@Labels.Actions">
+		<PropertyColumn Property="@(p => p.Id)" Title="@L[nameof(Labels.Id)]" />
+		<PropertyColumn Property="@(p => p.Name)" Title="@L[nameof(Labels.Name)]" />
+		<TemplateColumn Title="@L[nameof(Labels.Selected)]">
+			<FluentCheckbox Value="@(context.Selected)" ValueChanged="@((value) => context.Selected = value)" aria-label="@L[nameof(Labels.SelectRole)]" />
+		</TemplateColumn>
+		<TemplateColumn Title="@L[nameof(Labels.Actions)]">
 			<FluentStack Orientation="Orientation.Horizontal">
-				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Details/{context.Id}")">@Labels.Details</FluentAnchor>
-				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Edit/{context.Id}")">@Labels.Edit</FluentAnchor>
+				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Details/{context.Id}")">@L[nameof(Labels.Details)]</FluentAnchor>
+				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Edit/{context.Id}")">@L[nameof(Labels.Edit)]</FluentAnchor>
 			</FluentStack>
 		</TemplateColumn>
 	</FluentDataGrid>

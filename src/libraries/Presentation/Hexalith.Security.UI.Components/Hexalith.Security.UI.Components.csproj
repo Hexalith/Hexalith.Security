@@ -25,6 +25,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Resources\UserRoles\UserRoles.Designer.cs">
+      <DependentUpon>UserRoles.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Resources\Roles\Roles.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -39,6 +44,10 @@
   <ItemGroup>
     <EmbeddedResource Update="Resources\Partitions\PartitionSummaryGrid.resx">
       <LastGenOutput>PartitionSummaryGrid.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\UserRoles\UserRoles.resx">
+      <LastGenOutput>UserRoles.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Roles\Roles.resx">
