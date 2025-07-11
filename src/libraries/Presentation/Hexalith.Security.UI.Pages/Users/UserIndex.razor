@@ -1,8 +1,9 @@
 ﻿@page "/Security/User"
 @rendermode InteractiveServer
 @using Labels = Hexalith.Security.UI.Pages.Resources.Users.UserIndex
+@inject IStringLocalizer<Labels> L
 
-<FluentLabel Typo="Typography.PageTitle">@Labels.Title</FluentLabel>
+<FluentLabel Typo="Typography.PageTitle">@L[nameof(Labels.Title)]</FluentLabel>
 <UserSummaryGrid/>
 
 @code {

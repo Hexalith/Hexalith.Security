@@ -1,0 +1,51 @@
+﻿@inject IRoleService RoleService
+@inject IUserService UserService
+@using Hexalith.Security.Application
+@using Labels = Hexalith.Security.UI.Components.Resources.Roles.Roles
+
+@if (_roles is null)
+{
+	<FluentProgressRing />
+}
+else
+{
+	<FluentDataGrid TGridItem="RoleSummaryViewModel" Items="@_userRoles" ResizableColumns="true"
+					OnRowClick="HandleRowClick" Selectable SelectionMode="SelectionMode.Single">
+		<PropertyColumn Property="@(p => p.Id)" Title="@Labels.Id" />
+		<PropertyColumn Property="@(p => p.Name)" Title="@Labels.Name" />
+		<TemplateColumn Title="@Labels.Actions">
+			<FluentStack Orientation="Orientation.Horizontal">
+				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Details/{context.Id}")">@Labels.Details</FluentAnchor>
+				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Edit/{context.Id}")">@Labels.Edit</FluentAnchor>
+			</FluentStack>
+		</TemplateColumn>
+	</FluentDataGrid>
+}
+
+@code {
+	[Parameter]
+	public EventCallback<string> OnRoleClick { get; set; }
+	[Parameter]
+	[EditorRequired]
+	public required string UserId { get; set; }
+
+	private IQueryable<RoleSummaryViewModel>? _userRoles
+		=> _roles?.Where(role => _userRoleIds?.Contains(role.Id) ?? false).AsQueryable();
+	private IEnumerable<string>? _userRoleIds;
+	private IEnumerable<RoleSummaryViewModel>? _roles;
+
+	protected override async Task OnInitializedAsync()
+	{
+		_userRoleIds = await UserService.GetUserRolesAsync(UserId, CancellationToken.None);
+		_roles = await RoleService.GetAllAsync(CancellationToken.None);
+		await base.OnInitializedAsync();
+	}
+
+	private async Task HandleRowClick(FluentDataGridRow<RoleSummaryViewModel> args)
+	{
+		if (args.Item != null)
+		{
+			await OnRoleClick.InvokeAsync(args.Item.Id);
+		}
+	}
+}

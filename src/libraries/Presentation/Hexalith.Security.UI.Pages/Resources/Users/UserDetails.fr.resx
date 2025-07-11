@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Back" xml:space="preserve">
-    <value>Back to List</value>
+    <value>Retour à la liste</value>
   </data>
   <data name="DetailsTitle" xml:space="preserve">
-    <value>User Details</value>
+    <value>Détails de l'utilisateur</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Modifier</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>Courriel</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Full Name</value>
+    <value>Nom complet</value>
   </data>
   <data name="Id" xml:space="preserve">
-    <value>User ID</value>
+    <value>Identifiant</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
-    <value>User not found</value>
+    <value>Utilisateur non trouvé</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>Username</value>
+    <value>Nom de l'utilisateur</value>
   </data>
   <data name="UserRoles" xml:space="preserve">
-    <value>User roles</value>
+    <value>Rôles de l'utilisateur</value>
   </data>
 </root>

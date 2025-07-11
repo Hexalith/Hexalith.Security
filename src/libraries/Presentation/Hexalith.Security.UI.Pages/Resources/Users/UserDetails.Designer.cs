@@ -117,9 +117,9 @@ namespace Hexalith.Security.UI.Pages.Resources.Users {
         /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
-        internal static string Username {
+        internal static string UserName {
             get {
-                return ResourceManager.GetString("Username", resourceCulture);
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
         
@@ -129,6 +129,15 @@ namespace Hexalith.Security.UI.Pages.Resources.Users {
         internal static string UserNotFound {
             get {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User roles.
+        /// </summary>
+        internal static string UserRoles {
+            get {
+                return ResourceManager.GetString("UserRoles", resourceCulture);
             }
         }
     }
