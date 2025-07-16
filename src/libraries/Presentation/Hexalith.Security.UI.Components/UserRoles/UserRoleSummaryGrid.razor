@@ -1,5 +1,6 @@
 ﻿@inject IRoleService RoleService
 @inject IUserService UserService
+@inject NavigationManager NavigationManager
 @using Hexalith.Security.Application
 @using Labels = Hexalith.Security.UI.Components.Resources.UserRoles.UserRoles
 @using Microsoft.Extensions.Localization
@@ -12,18 +13,14 @@
 }
 else
 {
-	<FluentDataGrid TGridItem="RoleSummaryViewModel" Items="@_userRoles" ResizableColumns="true"
-					OnRowClick="HandleRowClick" Selectable SelectionMode="SelectionMode.Single">
+	<FluentDataGrid TGridItem="RoleSummaryViewModel"
+					Items="@_roles.AsQueryable()"
+					ResizableColumns="true"
+					OnRowDoubleClick="HandleRowClick">
 		<PropertyColumn Property="@(p => p.Id)" Title="@L[nameof(Labels.Id)]" />
 		<PropertyColumn Property="@(p => p.Name)" Title="@L[nameof(Labels.Name)]" />
-		<TemplateColumn Title="@L[nameof(Labels.Selected)]">
-			<FluentCheckbox Value="@(context.Selected)" ValueChanged="@((value) => context.Selected = value)" aria-label="@L[nameof(Labels.SelectRole)]" />
-		</TemplateColumn>
-		<TemplateColumn Title="@L[nameof(Labels.Actions)]">
-			<FluentStack Orientation="Orientation.Horizontal">
-				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Details/{context.Id}")">@L[nameof(Labels.Details)]</FluentAnchor>
-				<FluentAnchor Appearance="Appearance.Lightweight" Href="@($"/Security/Role/Edit/{context.Id}")">@L[nameof(Labels.Edit)]</FluentAnchor>
-			</FluentStack>
+		<TemplateColumn Title="@(L[nameof(Labels.Selected)])">
+			<FluentCheckbox Value="@IsUserRole(context.Id)" ValueChanged="@(() => ToggleUserRole(context.Id))" />
 		</TemplateColumn>
 	</FluentDataGrid>
 }
@@ -35,8 +32,6 @@ else
 	[EditorRequired]
 	public required string UserId { get; set; }
 
-	private IQueryable<RoleSummaryViewModel>? _userRoles
-		=> _roles?.Where(role => _userRoleIds?.Contains(role.Id) ?? false).AsQueryable();
 	private IEnumerable<string>? _userRoleIds;
 	private IEnumerable<RoleSummaryViewModel>? _roles;
 
@@ -46,12 +41,30 @@ else
 		_roles = await RoleService.GetAllAsync(CancellationToken.None);
 		await base.OnInitializedAsync();
 	}
-
-	private async Task HandleRowClick(FluentDataGridRow<RoleSummaryViewModel> args)
+	private bool IsUserRole(string roleId)
 	{
-		if (args.Item != null)
+		return _userRoleIds?.Contains(roleId) ?? false;
+	}
+
+	private async Task ToggleUserRole(string roleId)
+	{
+		ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+		if (_userRoleIds is null)
+			_userRoleIds = [];
+		if (IsUserRole(roleId))
 		{
-			await OnRoleClick.InvokeAsync(args.Item.Id);
+			await UserService.RemoveRoleAsync(UserId, roleId, CancellationToken.None);
+			_userRoleIds = [.. _userRoleIds.Where(p => p != roleId)];
 		}
+		else
+		{
+			await UserService.AddRoleAsync(UserId, roleId, CancellationToken.None);
+			_userRoleIds = [.. _userRoleIds.Append(roleId)];
+		}
+	}
+
+	private void HandleRowClick(FluentDataGridRow<RoleSummaryViewModel> args)
+	{
+		NavigationManager.NavigateTo($"/Security/Role/{args.Id}");
 	}
 }
