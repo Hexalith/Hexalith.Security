@@ -32,34 +32,43 @@ else
 	[EditorRequired]
 	public required string UserId { get; set; }
 
-	private IEnumerable<string>? _userRoleIds;
+	private IEnumerable<string>? _userRoleNames;
 	private IEnumerable<RoleSummaryViewModel>? _roles;
 
 	protected override async Task OnInitializedAsync()
 	{
-		_userRoleIds = await UserService.GetUserRolesAsync(UserId, CancellationToken.None);
+		_userRoleNames = await UserService.GetUserRolesAsync(UserId, CancellationToken.None);
 		_roles = await RoleService.GetAllAsync(CancellationToken.None);
 		await base.OnInitializedAsync();
 	}
+	
 	private bool IsUserRole(string roleId)
 	{
-		return _userRoleIds?.Contains(roleId) ?? false;
+		// Find the role by ID to get its name
+		var role = _roles?.FirstOrDefault(r => r.Id == roleId);
+		return role != null && (_userRoleNames?.Contains(role.Name) ?? false);
 	}
 
 	private async Task ToggleUserRole(string roleId)
 	{
 		ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
-		if (_userRoleIds is null)
-			_userRoleIds = [];
+		if (_userRoleNames is null)
+			_userRoleNames = [];
+		
+		// Find the role to get its name
+		var role = _roles?.FirstOrDefault(r => r.Id == roleId);
+		if (role == null || string.IsNullOrWhiteSpace(role.Name))
+			return;
+			
 		if (IsUserRole(roleId))
 		{
 			await UserService.RemoveRoleAsync(UserId, roleId, CancellationToken.None);
-			_userRoleIds = [.. _userRoleIds.Where(p => p != roleId)];
+			_userRoleNames = [.. _userRoleNames.Where(p => p != role.Name)];
 		}
 		else
 		{
 			await UserService.AddRoleAsync(UserId, roleId, CancellationToken.None);
-			_userRoleIds = [.. _userRoleIds.Append(roleId)];
+			_userRoleNames = [.. _userRoleNames.Append(role.Name)];
 		}
 	}
 

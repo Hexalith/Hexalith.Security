@@ -61,6 +61,15 @@ namespace Hexalith.Security.UI.Components.Resources.Users {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string Email {
@@ -93,15 +102,6 @@ namespace Hexalith.Security.UI.Components.Resources.Users {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Details.
-        /// </summary>
-        internal static string Details {
-            get {
-                return ResourceManager.GetString("Details", resourceCulture);
             }
         }
     }

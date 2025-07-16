@@ -17,31 +17,36 @@ using Hexalith.Security.Application.Users;
 using Microsoft.AspNetCore.Identity;
 
 /// <summary>
-/// Service for managing users.
+/// Represents a service for managing users.
 /// </summary>
 public class UserService : IUserService
 {
     private readonly IUserClaimStore<CustomUser> _claimStore;
+    private readonly IRoleStore<CustomRole> _roleStore;
     private readonly IUserCollectionService _userCollectionService;
     private readonly IUserStore<CustomUser> _userStore;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UserService"/> class.
     /// </summary>
-    /// <param name="userCollectionService">The user collection service.</param>
     /// <param name="userStore">The user store.</param>
     /// <param name="claimStore">The claim store.</param>
+    /// <param name="userCollectionService">The user collection service.</param>
+    /// <param name="roleStore">The role store.</param>
     public UserService(
-        IUserCollectionService userCollectionService,
         IUserStore<CustomUser> userStore,
-        IUserClaimStore<CustomUser> claimStore)
+        IUserClaimStore<CustomUser> claimStore,
+        IUserCollectionService userCollectionService,
+        IRoleStore<CustomRole> roleStore)
     {
-        ArgumentNullException.ThrowIfNull(userCollectionService);
         ArgumentNullException.ThrowIfNull(userStore);
         ArgumentNullException.ThrowIfNull(claimStore);
-        _userCollectionService = userCollectionService;
+        ArgumentNullException.ThrowIfNull(userCollectionService);
+        ArgumentNullException.ThrowIfNull(roleStore);
         _userStore = userStore;
         _claimStore = claimStore;
+        _userCollectionService = userCollectionService;
+        _roleStore = roleStore;
     }
 
     /// <inheritdoc/>
@@ -52,6 +57,22 @@ public class UserService : IUserService
             new CustomUser { Id = userId },
             [new Claim(ClaimTypes.Role, ApplicationRoles.GlobalAdministrator)],
             cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task AddRoleAsync(string userId, string roleId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+
+        // Fetch the role to get the role name
+        CustomRole? role = (await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false))
+            ?? throw new InvalidOperationException($"Role with ID '{roleId}' not found.");
+
+        await _claimStore.AddClaimsAsync(
+            new CustomUser { Id = userId },
+            [new Claim(ClaimTypes.Role, role.Name ?? roleId)],
+            cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -107,7 +128,7 @@ public class UserService : IUserService
             Name = user.UserName ?? string.Empty,
             Email = user.Email,
             Disabled = user.Disabled,
-            Roles = claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList(),
+            Roles = [.. claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value)],
         };
     }
 
@@ -159,6 +180,21 @@ public class UserService : IUserService
             ?? throw new InvalidOperationException("User not found.");
 
     /// <inheritdoc/>
+    public async Task<IEnumerable<string>> GetUserRolesAsync(string userId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+
+        CustomUser? user = await _userStore.FindByIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        if (user == null)
+        {
+            return [];
+        }
+
+        IList<Claim> claims = await _claimStore.GetClaimsAsync(user, cancellationToken).ConfigureAwait(false);
+        return [.. claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value)];
+    }
+
+    /// <inheritdoc/>
     public async Task GrantGlobalAdministratorRoleAsync(string userId, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(userId);
@@ -176,6 +212,21 @@ public class UserService : IUserService
             cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
+    public async Task RemoveRoleAsync(string userId, string roleId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
+
+        // Fetch the role to get the role name
+        CustomRole? role = await _roleStore.FindByIdAsync(roleId, cancellationToken).ConfigureAwait(false)
+            ?? throw new InvalidOperationException($"Role with ID '{roleId}' not found.");
+        await _claimStore.RemoveClaimsAsync(
+            new CustomUser { Id = userId },
+            [new Claim(ClaimTypes.Role, role.Name ?? roleId)],
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
     public Task UpdateAsync(UserEditViewModel user, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(user);
@@ -188,44 +239,5 @@ public class UserService : IUserService
             Disabled = user.Disabled,
         };
         return _userStore.UpdateAsync(customUser, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task AddRoleAsync(string userId, string roleId, CancellationToken cancellationToken)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
-        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
-
-        await _claimStore.AddClaimsAsync(
-            new CustomUser { Id = userId },
-            [new Claim(ClaimTypes.Role, roleId)],
-            cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task RemoveRoleAsync(string userId, string roleId, CancellationToken cancellationToken)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
-        ArgumentException.ThrowIfNullOrWhiteSpace(roleId);
-
-        await _claimStore.RemoveClaimsAsync(
-            new CustomUser { Id = userId },
-            [new Claim(ClaimTypes.Role, roleId)],
-            cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task<IEnumerable<string>> GetUserRolesAsync(string userId, CancellationToken cancellationToken)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
-
-        CustomUser? user = await _userStore.FindByIdAsync(userId, cancellationToken).ConfigureAwait(false);
-        if (user == null)
-        {
-            return [];
-        }
-
-        IList<Claim> claims = await _claimStore.GetClaimsAsync(user, cancellationToken).ConfigureAwait(false);
-        return claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
     }
 }
