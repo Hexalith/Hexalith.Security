@@ -24,6 +24,7 @@ public static class SecurityMenu
                     new IconInformation("Shield", 20, IconStyle.Regular),
                     true,
                     0,
+                    null,
                     [
                         new MenuItemInformation(
                             Labels.ManageAccountMenuItem,
@@ -31,6 +32,7 @@ public static class SecurityMenu
                             new IconInformation("BuildingRetailShield", 20, IconStyle.Regular),
                             false,
                             10,
+                            null,
                             []),
                         new MenuItemInformation(
                             Labels.RegisterUserMenuItem,
@@ -38,6 +40,7 @@ public static class SecurityMenu
                             new IconInformation("ShieldAdd", 20, IconStyle.Regular),
                             false,
                             10,
+                            null,
                             []),
                         new MenuItemInformation(
                             Labels.LoginMenuItem,
@@ -45,6 +48,7 @@ public static class SecurityMenu
                             new IconInformation("ShieldCheckmark", 20, IconStyle.Regular),
                             false,
                             10,
+                            null,
                             []),
                         new MenuItemInformation(
                             Labels.LogoutMenuItem,
@@ -52,6 +56,7 @@ public static class SecurityMenu
                             new IconInformation("ShieldDismiss", 20, IconStyle.Regular),
                             false,
                             10,
+                            null,
                             []),
                         new MenuItemInformation(
                             Labels.UserIdentityMenuItem,
@@ -59,6 +64,7 @@ public static class SecurityMenu
                             new IconInformation("ShieldPerson", 20, IconStyle.Regular),
                             false,
                             10,
+                            null,
                             []),
                         new MenuItemInformation(
                             Labels.ClaimsMenuItem,
@@ -66,6 +72,7 @@ public static class SecurityMenu
                             new IconInformation("ShieldKeyhole", 20, IconStyle.Regular),
                             false,
                             30,
+                            null,
                             []),
                         new MenuItemInformation(
                             Labels.UsersMenuItem,
@@ -73,6 +80,7 @@ public static class SecurityMenu
                             new IconInformation("PersonKey", 20, IconStyle.Regular),
                             false,
                             30,
+                            SecurityPolicies.Readers,
                             []),
                         new MenuItemInformation(
                             Labels.RolesMenuItem,
@@ -80,6 +88,7 @@ public static class SecurityMenu
                             new IconInformation("PanelLeftHeaderKey", 20, IconStyle.Regular),
                             false,
                             30,
+                            SecurityPolicies.Readers,
                             []),
                     ]);
 }
