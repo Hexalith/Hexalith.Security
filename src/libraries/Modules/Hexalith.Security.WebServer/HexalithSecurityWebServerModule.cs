@@ -15,6 +15,7 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.IdentityStores.UI.Helpers;
 using Hexalith.Security.Application;
 using Hexalith.Security.Application.Configurations;
+using Hexalith.Security.Application.Helpers;
 using Hexalith.Security.Application.Menu;
 using Hexalith.Security.Servers.Controllers;
 using Hexalith.Security.Servers.Helpers;
@@ -33,7 +34,7 @@ public sealed class HexalithSecurityWebServerModule : IWebServerApplicationModul
     private static string? _version;
 
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => new Dictionary<string, AuthorizationPolicy>();
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => SecurityModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];

@@ -16,6 +16,7 @@ using Hexalith.IdentityStores.Models;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Security.Application;
+using Hexalith.Security.Application.Helpers;
 using Hexalith.Security.Servers.Controllers;
 
 using Microsoft.AspNetCore.Authorization;
@@ -30,7 +31,7 @@ public sealed class HexalithSecurityApiServerModule : IApiServerApplicationModul
     private static string? _version;
 
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => new Dictionary<string, AuthorizationPolicy>();
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => SecurityModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
