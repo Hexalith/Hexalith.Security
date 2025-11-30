@@ -10,7 +10,7 @@ using Hexalith.Domains.ValueObjects;
 /// <summary>
 /// Represents the details of a user in the application.
 /// </summary>
-public class UserDetailsViewModel : IIdDescription
+public sealed class UserDetailsViewModel : IIdDescription
 {
     /// <inheritdoc/>
     public bool Disabled { get; set; }
@@ -33,7 +33,7 @@ public class UserDetailsViewModel : IIdDescription
     /// <summary>
     /// Gets or sets the collection of role IDs assigned to the user.
     /// </summary>
-    public List<string> Roles { get; set; } = [];
+    public IEnumerable<string> Roles { get; set; } = [];
 
     /// <inheritdoc/>
     string IIdDescription.Description => Name;
