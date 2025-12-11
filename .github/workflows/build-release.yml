@@ -50,7 +50,7 @@ jobs:
     - name: Publish Application Containers
       uses: Hexalith/Hexalith.Builds/Github/publish-container-to-registry@main
       with:
-        app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
+        app-id:  "security"
         version: ${{ needs.build-and-test.outputs.version }}
         registry: registry.hexalith.com
         username: ${{ secrets.ZOT_USERNAME }}
@@ -75,7 +75,7 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         # Update Web deployment
-        kubectl set image deployment/hexalithsecurity-web hexalithsecurity-web=registry.hexalith.com/hexalithsecurityweb:${{ needs.build-and-test.outputs.version }}
+        kubectl set image deployment/hexalithsecurity-web hexalithsecurity-web=registry.hexalith.com/securityweb:${{ needs.build-and-test.outputs.version }}
         
         # Update Api deployment
-        kubectl set image deployment/hexalithsecurity-api hexalithsecurity-api=registry.hexalith.com/hexalithsecurityapi:${{ needs.build-and-test.outputs.version }}
+        kubectl set image deployment/hexalithsecurity-api hexalithsecurity-api=registry.hexalith.com/securityapi:${{ needs.build-and-test.outputs.version }}
