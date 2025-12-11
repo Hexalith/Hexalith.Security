@@ -79,3 +79,4 @@ jobs:
         
         # Update Api deployment
         kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api=registry.hexalith.com/hexalithsecurityapi:${{ needs.build-and-test.outputs.version != '' && needs.build-and-test.outputs.version || 'dev-test' }}
+# Trigger deployment test
