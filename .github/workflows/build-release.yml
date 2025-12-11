@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish Containers
     needs: build-and-test
-    # if: ${{ needs.build-and-test.outputs.version != '' }}
+    if: ${{ needs.build-and-test.outputs.version != '' }}
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -51,7 +51,7 @@ jobs:
       uses: Hexalith/Hexalith.Builds/Github/publish-container-to-registry@main
       with:
         app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
-        version: ${{ needs.build-and-test.outputs.version != '' && needs.build-and-test.outputs.version || 'dev-test' }}
+        version: ${{ needs.build-and-test.outputs.version }}
         registry: registry.hexalith.com
         username: ${{ secrets.ZOT_USERNAME }}
         password: ${{ secrets.ZOT_PASSWORD }}
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy to Kubernetes
     needs: [build-and-test, publish-containers]
-    # if: ${{ needs.build-and-test.outputs.version != '' }}
+    if: ${{ needs.build-and-test.outputs.version != '' }}
     environment: Production
     steps:
     - name: Set up kubectl
@@ -75,8 +75,7 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         # Update Web deployment
-        kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-web ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-web=registry.hexalith.com/hexalithsecurityweb:${{ needs.build-and-test.outputs.version != '' && needs.build-and-test.outputs.version || 'dev-test' }}
+        kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-web ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-web=registry.hexalith.com/hexalithsecurityweb:${{ needs.build-and-test.outputs.version }}
         
         # Update Api deployment
-        kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api=registry.hexalith.com/hexalithsecurityapi:${{ needs.build-and-test.outputs.version != '' && needs.build-and-test.outputs.version || 'dev-test' }}
-# Trigger deployment test
+        kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api=registry.hexalith.com/hexalithsecurityapi:${{ needs.build-and-test.outputs.version }}
