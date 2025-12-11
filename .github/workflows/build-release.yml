@@ -52,25 +52,30 @@ jobs:
       with:
         app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
         version: ${{ needs.build-and-test.outputs.version }}
-        registry: ${{ vars.AZURE_REGISTRY }}
-        username: ${{ secrets.AZURE_APPLICATIONID }}
-        password: ${{ secrets.AZURE_APPLICATIONSECRET }}
+        registry: registry.hexalith.com
+        username: ${{ secrets.ZOT_USERNAME }}
+        password: ${{ secrets.ZOT_PASSWORD }}
 
-  deploy-azure:
-    runs-on: ubuntu-latest
-    name: Deploy to Azure Container Apps
-    needs: [build-and-test, publish-containers]
-    if: ${{ needs.build-and-test.outputs.version != '' }}
-    environment: Staging
-    steps:
-    - name: Deploy to Azure Container Apps
-      uses: Hexalith/Hexalith.Builds/Github/publish-azure-container-app@main
-      with:
-        version: ${{ needs.build-and-test.outputs.version }}
-        client-id: ${{ secrets.AZURE_APPLICATIONID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        resource-group: ${{ vars.HEXALITH_RESOURCE_GROUP }}
-        app-id:  ${{ vars.HEXALITH_MODULE_SHORT_NAME }}
-        registry: ${{ vars.AZURE_REGISTRY }}
-    
+#   deploy-k8s:
+#     runs-on: ubuntu-latest
+#     name: Deploy to Kubernetes
+#     needs: [build-and-test, publish-containers]
+#     if: ${{ needs.build-and-test.outputs.version != '' }}
+#     environment: Production
+#     steps:
+#     - name: Set up kubectl
+#       uses: azure/setup-kubectl@v3
+#       
+#     - name: Set Kubernetes Context
+#       uses: azure/k8s-set-context@v3
+#       with:
+#         method: kubeconfig
+#         kubeconfig: ${{ secrets.KUBE_CONFIG }}
+# 
+#     - name: Deploy to Kubernetes
+#       run: |
+#         # Update Web deployment
+#         kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-web ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-web=zot.hexalith.com/${{ vars.HEXALITH_MODULE_SHORT_NAME }}web:${{ needs.build-and-test.outputs.version }}
+#         
+#         # Update Api deployment
+#         kubectl set image deployment/${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api ${{ vars.HEXALITH_MODULE_SHORT_NAME }}-api=zot.hexalith.com/${{ vars.HEXALITH_MODULE_SHORT_NAME }}api:${{ needs.build-and-test.outputs.version }}
